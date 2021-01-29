@@ -56,7 +56,7 @@ export const equipoRoute: Routes = [
       equipo: EquipoResolve
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [],
       pageTitle: 'proquiEquiposVentaApp.equipo.home.title'
     },
     canActivate: [UserRouteAccessService]

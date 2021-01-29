@@ -56,7 +56,7 @@ export const usuarioRoute: Routes = [
       usuario: UsuarioResolve
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [],
       pageTitle: 'proquiEquiposVentaApp.usuario.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -68,7 +68,7 @@ export const usuarioRoute: Routes = [
       usuario: UsuarioResolve
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [],
       pageTitle: 'proquiEquiposVentaApp.usuario.home.title'
     },
     canActivate: [UserRouteAccessService]
