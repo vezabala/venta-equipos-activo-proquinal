@@ -10,6 +10,7 @@ import { IUsuario } from 'app/shared/model/usuario.model';
 import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { UsuarioService } from './usuario.service';
 import { UsuarioDeleteDialogComponent } from './usuario-delete-dialog.component';
+import { BusquedaUsuario } from 'app/entities/model/busquedaUsuario';
 
 @Component({
   selector: 'jhi-usuario',
@@ -24,6 +25,14 @@ export class UsuarioComponent implements OnInit, OnDestroy {
   predicate!: string;
   ascending!: boolean;
   ngbPaginationPage = 1;
+  equipos: any[] = [];
+  usuariosList: any[] = [];
+  equipoElegido: any = null;
+
+  busqueda: BusquedaUsuario = {
+    numeroDocumento: '',
+    equipo: ''
+  };
 
   constructor(
     protected usuarioService: UsuarioService,
@@ -55,8 +64,28 @@ export class UsuarioComponent implements OnInit, OnDestroy {
       this.predicate = data.pagingParams.predicate;
       this.ngbPaginationPage = data.pagingParams.page;
       this.loadPage();
+      this.listaEquiposU();
+      this.listaUsuarios();
     });
     this.registerChangeInUsuarios();
+  }
+
+  listaEquiposU(): void {
+    this.usuarioService.equipos().subscribe(
+      data => {
+        this.equipos = data;
+      },
+      () => this.onError()
+    );
+  }
+
+  listaUsuarios(): void {
+    this.usuarioService.usuarios(this.busqueda).subscribe(
+      data => {
+        this.usuariosList = data;
+      },
+      () => this.onError()
+    );
   }
 
   ngOnDestroy(): void {
@@ -102,5 +131,25 @@ export class UsuarioComponent implements OnInit, OnDestroy {
 
   protected onError(): void {
     this.ngbPaginationPage = this.page;
+  }
+
+  onChangeEsuario(): void {
+    if (this.equipoElegido) {
+      this.busqueda.equipo = this.equipoElegido.activoFijo;
+    } else {
+      this.busqueda.equipo = '';
+    }
+    this.listaUsuarios();
+  }
+
+  clearNumeroDocumento(): void {
+    this.busqueda.numeroDocumento = '';
+    this.listaUsuarios();
+  }
+  clear(): void {
+    this.equipoElegido = null;
+    this.busqueda.equipo = '';
+    this.busqueda.numeroDocumento = '';
+    this.listaUsuarios();
   }
 }

@@ -10,6 +10,7 @@ import { IEquipo } from 'app/shared/model/equipo.model';
 import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { EquipoService } from './equipo.service';
 import { EquipoDeleteDialogComponent } from './equipo-delete-dialog.component';
+import { BusquedaEquipo } from 'app/entities/model/busquedaEquipo';
 
 @Component({
   selector: 'jhi-equipo',
@@ -24,6 +25,12 @@ export class EquipoComponent implements OnInit, OnDestroy {
   predicate!: string;
   ascending!: boolean;
   ngbPaginationPage = 1;
+
+  equiposList: any[] = [];
+  busqueda: BusquedaEquipo = {
+    activoFijo: '',
+    tipo: ''
+  };
 
   constructor(
     protected equipoService: EquipoService,
@@ -56,8 +63,18 @@ export class EquipoComponent implements OnInit, OnDestroy {
       this.predicate = data.pagingParams.predicate;
       this.ngbPaginationPage = data.pagingParams.page;
       this.loadPage();
+      this.listaEquipos();
     });
     this.registerChangeInEquipos();
+  }
+
+  listaEquipos(): void {
+    this.equipoService.equipos(this.busqueda).subscribe(
+      data => {
+        this.equipos = data;
+      },
+      () => this.onError()
+    );
   }
 
   ngOnDestroy(): void {
@@ -111,5 +128,15 @@ export class EquipoComponent implements OnInit, OnDestroy {
 
   protected onError(): void {
     this.ngbPaginationPage = this.page;
+  }
+
+  clearActivoFijo(): void {
+    this.busqueda.activoFijo = '';
+    this.listaEquipos();
+  }
+  clear(): void {
+    this.busqueda.activoFijo = '';
+    this.busqueda.tipo = '';
+    this.listaEquipos();
   }
 }

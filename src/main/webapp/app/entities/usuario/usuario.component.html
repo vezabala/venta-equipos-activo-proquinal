@@ -18,6 +18,44 @@
         <span jhiTranslate="proquiEquiposVentaApp.usuario.home.notFound">No usuarios found</span>
     </div>
 
+    <div class="container mb-5">
+        <form>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="numeroDocumento"><b>numero documento:</b></label>
+                        <div class="input-group">
+                            <button class="btn btn-outline-danger" (click)="clearNumeroDocumento()"
+                                    [disabled]="!busqueda.numeroDocumento">Vaciar</button>
+                            <input type="text" class="form-control" name="numeroDocumento" id="numeroDocumento"
+                                   [(ngModel)]="busqueda.numeroDocumento">
+                            <button class="btn btn-outline-success" (click)="listaUsuarios()"
+                                    [disabled]="!busqueda.numeroDocumento">Filtrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="equipoElegido"><b>Equipo:</b></label>
+                        <select class="form-control" name="equipoElegido" id="equipoElegido"
+                                [(ngModel)]="equipoElegido" (change)="onChangeEsuario()">
+                            <option [ngValue]="null" selected>Elige Activo Fijo</option>
+                            <option [ngValue]="equipo" *ngFor="let equipo of equipos">{{equipo.activoFijo}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col4">
+                    <label for="reseter"><b>Resetear:</b></label>
+                    <button class="btn btn-outline-danger form-control" (click)="clear()" id="reseter">Actualizar tabala y borrar Filtros</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
     <div class="table-responsive" id="entities" *ngIf="usuarios?.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
@@ -33,18 +71,14 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let usuario of usuarios ;trackBy: trackId">
+                <tr *ngFor="let usuario of usuariosList ;">
                     <td><a [routerLink]="['/usuario', usuario.id, 'view']">{{ usuario.id }}</a></td>
                     <td>{{ usuario.numeroDocumento }}</td>
                     <td>{{ usuario.nombres }}</td>
                     <td>{{ usuario.apellidos }}</td>
                     <td>{{ usuario.correo }}</td>
                     <td>{{ usuario.area }}</td>
-                    <td>
-                        <div *ngIf="usuario.equipoId">
-                            <a [routerLink]="['/equipo', usuario.equipoId , 'view']" >{{ usuario.equipoActivoFijo }}</a>
-                        </div>
-                    </td>
+                    <td>{{usuario.equipo.activoFijo}}</td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

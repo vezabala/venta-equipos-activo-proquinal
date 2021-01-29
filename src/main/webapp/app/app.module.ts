@@ -15,6 +15,9 @@ import { PageRibbonComponent } from './layouts/profiles/page-ribbon.component';
 import { ActiveMenuDirective } from './layouts/navbar/active-menu.directive';
 import { ErrorComponent } from './layouts/error/error.component';
 
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -23,7 +26,9 @@ import { ErrorComponent } from './layouts/error/error.component';
     ProquiEquiposVentaHomeModule,
     // jhipster-needle-angular-add-module JHipster will add new module here
     ProquiEquiposVentaEntityModule,
-    ProquiEquiposVentaAppRoutingModule
+    ProquiEquiposVentaAppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
   declarations: [MainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
   bootstrap: [MainComponent]

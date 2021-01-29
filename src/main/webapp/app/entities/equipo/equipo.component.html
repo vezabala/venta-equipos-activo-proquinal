@@ -17,6 +17,42 @@
     <div class="alert alert-warning" id="no-result" *ngIf="equipos?.length === 0">
         <span jhiTranslate="proquiEquiposVentaApp.equipo.home.notFound">No equipos found</span>
     </div>
+    <div class="container mb-5">
+        <form>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="activoFijo"><b>activo fijo:</b></label>
+                        <div class="input-group">
+                            <button class="btn btn-outline-danger" (click)="clearActivoFijo()"
+                                    [disabled]="!busqueda.activoFijo">Vaciar</button>
+                            <input type="text" class="form-control" name="activoFijo" id="activoFijo"
+                                   [(ngModel)]="busqueda.activoFijo">
+                            <button class="btn btn-outline-success" (click)="listaEquipos()"
+                                    [disabled]="!busqueda.activoFijo">Filtrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col4">
+                    <div class="form-group">
+                        <label for="tipo"><b>tipo:</b></label>
+                        <select class="form-control" name="tipo" id="tipo"
+                                [(ngModel)]="busqueda.tipo" (change)="listaEquipos()">
+                            <option value="" selected>Elige tipo:</option>
+                            <option value="escritorio">Equipo</option>
+                            <option value="portatil">Portatil</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col4">
+                    <label for="reseter"><b>Resetear:</b></label>
+                    <button class="btn btn-outline-danger form-control" (click)="clear()" id="reseter">Actualizar tabla y borrar Filtros</button>
+                </div>
+            </div>
+        </form>
+    </div>
 
     <div class="table-responsive" id="entities" *ngIf="equipos?.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
