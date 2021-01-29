@@ -156,7 +156,7 @@
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="proquiEquiposVentaApp.equipo.tipo" for="field_tipo">Tipo</label>
                     <select class="form-control" name="tipo" formControlName="tipo" id="field_tipo">
-                        <option value="EQUIPO">{{ 'proquiEquiposVentaApp.State.EQUIPO' | translate }}</option>
+                        <option value="ESCRITORIO">{{ 'proquiEquiposVentaApp.State.ESCRITORIO' | translate }}</option>
                         <option value="PORTATIL">{{ 'proquiEquiposVentaApp.State.PORTATIL' | translate }}</option>
                     </select>
                     <div *ngIf="editForm.get('tipo')!.invalid && (editForm.get('tipo')!.dirty || editForm.get('tipo')!.touched)">

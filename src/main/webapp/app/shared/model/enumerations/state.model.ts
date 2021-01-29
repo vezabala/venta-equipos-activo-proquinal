@@ -1,4 +1,4 @@
 export const enum State {
-  EQUIPO = 'EQUIPO',
+  ESCRITORIO = 'ESCRITORIO',
   PORTATIL = 'PORTATIL'
 }

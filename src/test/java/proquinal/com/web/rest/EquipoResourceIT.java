@@ -64,7 +64,7 @@ public class EquipoResourceIT {
     private static final String DEFAULT_IMG_URL_CONTENT_TYPE = "image/jpg";
     private static final String UPDATED_IMG_URL_CONTENT_TYPE = "image/png";
 
-    private static final State DEFAULT_TIPO = State.EQUIPO;
+    private static final State DEFAULT_TIPO = State.ESCRITORIO;
     private static final State UPDATED_TIPO = State.PORTATIL;
 
     @Autowired
@@ -357,7 +357,7 @@ public class EquipoResourceIT {
             .andExpect(jsonPath("$.[*].imgUrl").value(hasItem(Base64Utils.encodeToString(DEFAULT_IMG_URL))))
             .andExpect(jsonPath("$.[*].tipo").value(hasItem(DEFAULT_TIPO.toString())));
     }
-    
+
     @Test
     @Transactional
     public void getEquipo() throws Exception {

@@ -81,7 +81,7 @@
         {
             "fieldName": "tipo",
             "fieldType": "State",
-            "fieldValues": "EQUIPO,PORTATIL",
+            "fieldValues": "ESCRITORIO,PORTATIL",
             "fieldValidateRules": [
                 "required"
             ]

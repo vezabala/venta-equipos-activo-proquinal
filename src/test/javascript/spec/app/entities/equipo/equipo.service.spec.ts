@@ -33,7 +33,7 @@ describe('Service Tests', () => {
         'AAAAAAA',
         'image/png',
         'AAAAAAA',
-        State.EQUIPO
+        State.ESCRITORIO
       );
     });
 
