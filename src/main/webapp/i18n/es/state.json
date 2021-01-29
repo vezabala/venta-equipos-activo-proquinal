@@ -1,0 +1,9 @@
+{
+  "proquiEquiposVentaApp": {
+    "State": {
+      "null": "",
+      "EQUIPO": "EQUIPO",
+      "PORTATIL": "PORTATIL"
+    }
+  }
+}
