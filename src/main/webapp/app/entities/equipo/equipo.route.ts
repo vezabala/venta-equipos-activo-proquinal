@@ -10,8 +10,8 @@ import { UserRouteAccessService } from 'app/core/auth/user-route-access-service'
 import { IEquipo, Equipo } from 'app/shared/model/equipo.model';
 import { EquipoService } from './equipo.service';
 import { EquipoComponent } from './equipo.component';
-import { EquipoDetailComponent } from './equipo-detail.component';
-import { EquipoUpdateComponent } from './equipo-update.component';
+import { EquipoUpdateComponent } from 'app/entities/equipo/equipo-update.component';
+import { EquipoDetailComponent } from 'app/entities/equipo/equipo-detail.component';
 
 @Injectable({ providedIn: 'root' })
 export class EquipoResolve implements Resolve<IEquipo> {

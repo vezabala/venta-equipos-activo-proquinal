@@ -3,8 +3,10 @@ package proquinal.com.web.rest;
 import io.github.jhipster.service.filter.StringFilter;
 import io.micrometer.core.instrument.util.StringUtils;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import proquinal.com.criteria.UsuarioCriteria;
 import proquinal.com.domain.Usuario;
+import proquinal.com.security.AuthoritiesConstants;
 import proquinal.com.service.UsuarioService;
 import proquinal.com.service.UsuarioServiceQuery;
 import proquinal.com.service.dto.BusquedaUsuarioDTO;
@@ -107,6 +109,7 @@ public class UsuarioResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of usuarios in body.
      */
     @GetMapping("/usuarios")
+    @PreAuthorize("hasRole('"+ AuthoritiesConstants.ADMIN+"')")
     public ResponseEntity<List<UsuarioDTO>> getAllUsuarios(Pageable pageable) {
         log.debug("REST request to get a page of Usuarios");
         Page<UsuarioDTO> page = usuarioService.findAll(pageable);
@@ -139,6 +142,7 @@ public class UsuarioResource {
     }
 
     @GetMapping("/usuarios/list")
+    @PreAuthorize("hasRole('"+ AuthoritiesConstants.ADMIN+"')")
     public ResponseEntity<List<Usuario>> list(){
         List<Usuario> list = usuarioServiceQuery.findAll();
         return new ResponseEntity<List<Usuario>>(list, HttpStatus.OK);
@@ -164,6 +168,7 @@ public class UsuarioResource {
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
     @DeleteMapping("/usuarios/{id}")
+    @PreAuthorize("hasRole('"+ AuthoritiesConstants.ADMIN+"')")
     public ResponseEntity<Void> deleteUsuario(@PathVariable Long id) {
         log.debug("REST request to delete Usuario : {}", id);
         usuarioService.delete(id);

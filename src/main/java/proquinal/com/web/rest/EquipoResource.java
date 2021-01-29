@@ -3,9 +3,11 @@ package proquinal.com.web.rest;
 import io.github.jhipster.service.filter.StringFilter;
 import io.micrometer.core.instrument.util.StringUtils;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import proquinal.com.criteria.EquipoCriteria;
 import proquinal.com.domain.Equipo;
 import proquinal.com.domain.enumeration.State;
+import proquinal.com.security.AuthoritiesConstants;
 import proquinal.com.service.EquipoService;
 import proquinal.com.service.EquipoServiceQuery;
 import proquinal.com.service.dto.BusquedaEquipoDTO;
@@ -62,6 +64,7 @@ public class EquipoResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/equipos")
+    @PreAuthorize("hasRole('"+ AuthoritiesConstants.ADMIN+"')")
     public ResponseEntity<EquipoDTO> createEquipo(@Valid @RequestBody EquipoDTO equipoDTO) throws URISyntaxException {
         log.debug("REST request to save Equipo : {}", equipoDTO);
         if (equipoDTO.getId() != null) {
@@ -86,6 +89,7 @@ public class EquipoResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/equipos")
+    @PreAuthorize("hasRole('"+ AuthoritiesConstants.ADMIN+"')")
     public ResponseEntity<EquipoDTO> updateEquipo(@Valid @RequestBody EquipoDTO equipoDTO) throws URISyntaxException {
         log.debug("REST request to update Equipo : {}", equipoDTO);
         if (equipoDTO.getId() == null) {
@@ -168,6 +172,7 @@ public class EquipoResource {
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
     @DeleteMapping("/equipos/{id}")
+    @PreAuthorize("hasRole('"+ AuthoritiesConstants.ADMIN+"')")
     public ResponseEntity<Void> deleteEquipo(@PathVariable Long id) {
         log.debug("REST request to delete Equipo : {}", id);
         equipoService.delete(id);

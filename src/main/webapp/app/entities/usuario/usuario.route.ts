@@ -10,8 +10,8 @@ import { UserRouteAccessService } from 'app/core/auth/user-route-access-service'
 import { IUsuario, Usuario } from 'app/shared/model/usuario.model';
 import { UsuarioService } from './usuario.service';
 import { UsuarioComponent } from './usuario.component';
-import { UsuarioDetailComponent } from './usuario-detail.component';
-import { UsuarioUpdateComponent } from './usuario-update.component';
+import { UsuarioDetailComponent } from 'app/entities/usuario/usuario-detail.component';
+import { UsuarioUpdateComponent } from 'app/entities/usuario/usuario-update.component';
 
 @Injectable({ providedIn: 'root' })
 export class UsuarioResolve implements Resolve<IUsuario> {
