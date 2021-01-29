@@ -57,6 +57,9 @@ public class EquipoResource {
         if (equipoDTO.getId() != null) {
             throw new BadRequestAlertException("A new equipo cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        if (equipoService.findByActivoFijo(equipoDTO.getActivoFijo()).isPresent()) {
+            throw new BadRequestAlertException("A new equipo cannot already have an ACTIVOFIJO", ENTITY_NAME, "activofijoexists");
+        }
         EquipoDTO result = equipoService.save(equipoDTO);
         return ResponseEntity.created(new URI("/api/equipos/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
@@ -78,6 +81,11 @@ public class EquipoResource {
         if (equipoDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
+        Optional<EquipoDTO> equipoTemp = equipoService.findByActivoFijo(equipoDTO.getActivoFijo());
+        if (equipoTemp.isPresent())
+            if (!equipoTemp.get().getId().equals(equipoDTO.getId())) {
+                throw new BadRequestAlertException("A new equipo cannot already have an ACTIVOFIJO", ENTITY_NAME, "activofijoexists");
+            }
         EquipoDTO result = equipoService.save(equipoDTO);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, equipoDTO.getId().toString()))

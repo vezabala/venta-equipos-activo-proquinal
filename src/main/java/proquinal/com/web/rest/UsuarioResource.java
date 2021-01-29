@@ -57,6 +57,9 @@ public class UsuarioResource {
         if (usuarioDTO.getId() != null) {
             throw new BadRequestAlertException("A new usuario cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        if(usuarioService.findByNumeroDocumentoAndAndEquipo(usuarioDTO).isPresent()){
+            throw new BadRequestAlertException("A new usuario cannot already have an NUMERO DOCUMENTO and EQUIPO", ENTITY_NAME, "idequipoexist");
+        }
         UsuarioDTO result = usuarioService.save(usuarioDTO);
         return ResponseEntity.created(new URI("/api/usuarios/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
@@ -77,6 +80,10 @@ public class UsuarioResource {
         log.debug("REST request to update Usuario : {}", usuarioDTO);
         if (usuarioDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
+        }
+        Optional<UsuarioDTO> usuarioTemp = usuarioService.findByNumeroDocumentoAndAndEquipo(usuarioDTO);
+        if (usuarioTemp.isPresent() && (!usuarioTemp.get().getId().equals(usuarioDTO.getId()))) {
+            throw new BadRequestAlertException("A new usuario cannot already have an NUMERO DOCUMENTO and EQUIPO", ENTITY_NAME, "idequipoexist");
         }
         UsuarioDTO result = usuarioService.save(usuarioDTO);
         return ResponseEntity.ok()

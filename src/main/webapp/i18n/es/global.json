@@ -135,7 +135,9 @@
     "file": {
       "could.not.extract": "Could not extract file",
       "not.image": "File was expected to be an image but was found to be \"{{ fileType }}\""
-    }
+    },
+    "idequipoexist": "Ya  estas registrado en este equipo puedes elegir otro",
+    "activofijoexists": "Ya existe un activo fijo igual en la entidad{{ entityName }}"
   },
   "footer": "Pie de página"
 }

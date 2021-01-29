@@ -59,6 +59,57 @@ public class UsuarioService {
     }
 
     /**
+     * Get one usuario by numeroDocumento.
+     * @param numeroDocumento
+     * @return
+     */
+    @Transactional(readOnly = true)
+    public Optional<UsuarioDTO> findByNumeroDocumento (String numeroDocumento) {
+        log.debug("Request to get Usuario : {}", numeroDocumento);
+        return usuarioRepository.findByNumeroDocumento(numeroDocumento)
+            .map(usuarioMapper::toDto);
+    }
+
+    /**
+     * Get one usuario apellidos.
+     *
+     * @param apellidos
+     * @return the entity
+     */
+    @Transactional(readOnly = true)
+    public Optional<UsuarioDTO> findByApellidos(String apellidos) {
+        log.debug("Request to get Usuario : {}", apellidos);
+        return usuarioRepository.findByApellidos(apellidos)
+            .map(usuarioMapper::toDto);
+    }
+    /**
+     * Get one usuario by equipo.
+     *
+     * @param equipo
+     * @return the entity
+     */
+    @Transactional(readOnly = true)
+    public Optional<UsuarioDTO> findByEquipo (String equipo) {
+        log.debug("Request to get Usuario : {}", equipo);
+        return usuarioRepository.findByEquipo(equipo)
+            .map(usuarioMapper::toDto);
+    }
+
+    /**
+     * Get one customer by type document and number document.
+     *
+     * @param usuarioDTO the DTO of the customer
+     * @return the optional with the entity.
+     */
+    @Transactional(readOnly = true)
+    public Optional<UsuarioDTO> findByNumeroDocumentoAndAndEquipo(UsuarioDTO usuarioDTO) {
+        log.debug("Request to get Usuario : {}", usuarioDTO.getNumeroDocumento()+", "+usuarioDTO.getEquipoId());
+        return usuarioRepository.findByNumeroDocumentoAndAndEquipo(usuarioDTO.getNumeroDocumento(),
+            usuarioMapper.toEntity(usuarioDTO).getEquipo())
+            .map(usuarioMapper::toDto);
+    }
+
+    /**
      * Get one usuario by id.
      *
      * @param id the id of the entity.

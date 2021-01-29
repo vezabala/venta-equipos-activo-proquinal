@@ -59,6 +59,19 @@ public class EquipoService {
     }
 
     /**
+     * Get one equipo by activoFijo.
+     * @param activoFijo
+     * @return
+     */
+    @Transactional(readOnly = true)
+    public Optional<EquipoDTO> findByActivoFijo (String activoFijo) {
+        log.debug("Request to get Equipo : {}", activoFijo);
+        return equipoRepository.findByActivoFijo(activoFijo)
+            .map(equipoMapper::toDto);
+    }
+
+
+    /**
      * Get one equipo by id.
      *
      * @param id the id of the entity.

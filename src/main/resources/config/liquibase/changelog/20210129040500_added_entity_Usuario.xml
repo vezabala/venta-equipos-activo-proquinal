@@ -6,7 +6,7 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd
                         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-    
+
     <!--
         Added the entity Usuario.
     -->
@@ -35,6 +35,7 @@
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
+        <addUniqueConstraint tableName="usuario" constraintName="uk_numero_documento_equipo" columnNames="numero_documento,equipo_id"/>
     </changeSet>
 
     <changeSet id="20210129040500-1-relations" author="jhipster">
