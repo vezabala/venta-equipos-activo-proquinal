@@ -13,7 +13,7 @@ import java.util.Optional;
  */
 @SuppressWarnings("unused")
 @Repository
-public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
+public interface UsuarioRepository extends JpaRepository<Usuario, Long>,JpaSpecificationExecutor<Usuario> {
     Optional<Usuario> findByNumeroDocumento(String numeroDocumento);
 
     Optional<Usuario> findByApellidos(String apellidos);

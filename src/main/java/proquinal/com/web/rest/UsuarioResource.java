@@ -1,6 +1,13 @@
 package proquinal.com.web.rest;
 
+import io.github.jhipster.service.filter.StringFilter;
+import io.micrometer.core.instrument.util.StringUtils;
+import org.springframework.http.HttpStatus;
+import proquinal.com.criteria.UsuarioCriteria;
+import proquinal.com.domain.Usuario;
 import proquinal.com.service.UsuarioService;
+import proquinal.com.service.UsuarioServiceQuery;
+import proquinal.com.service.dto.BusquedaUsuarioDTO;
 import proquinal.com.web.rest.errors.BadRequestAlertException;
 import proquinal.com.service.dto.UsuarioDTO;
 
@@ -13,7 +20,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -40,8 +46,11 @@ public class UsuarioResource {
 
     private final UsuarioService usuarioService;
 
-    public UsuarioResource(UsuarioService usuarioService) {
+    private final UsuarioServiceQuery usuarioServiceQuery;
+
+    public UsuarioResource(UsuarioService usuarioService, UsuarioServiceQuery usuarioServiceQuery) {
         this.usuarioService = usuarioService;
+        this.usuarioServiceQuery = usuarioServiceQuery;
     }
 
     /**
@@ -103,6 +112,36 @@ public class UsuarioResource {
         Page<UsuarioDTO> page = usuarioService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
+
+    @PostMapping("/usuarios/list")
+    public ResponseEntity<List<Usuario>> List(@RequestBody BusquedaUsuarioDTO busquedaUsuarioDTO){
+        UsuarioCriteria usuarioCriteria = createCriteria(busquedaUsuarioDTO);
+        List<Usuario> list = usuarioServiceQuery.findByCriterial(usuarioCriteria);
+        return new ResponseEntity<List<Usuario>>(list, HttpStatus.OK);
+    }
+
+    private UsuarioCriteria createCriteria(BusquedaUsuarioDTO dto){
+        UsuarioCriteria usuarioCriteria = new UsuarioCriteria();
+        if(dto!=null){
+            if(!StringUtils.isBlank(dto.getNumeroDocumento())){
+                StringFilter filter = new StringFilter();
+                filter.setEquals(dto.getNumeroDocumento());
+                usuarioCriteria.setNumeroDocumento(filter);
+            }
+            if(!StringUtils.isBlank(dto.getEquipo())){
+                StringFilter filter = new StringFilter();
+                filter.setEquals(dto.getEquipo());
+                usuarioCriteria.setEquipo(filter);
+            }
+        }
+        return usuarioCriteria;
+    }
+
+    @GetMapping("/usuarios/list")
+    public ResponseEntity<List<Usuario>> list(){
+        List<Usuario> list = usuarioServiceQuery.findAll();
+        return new ResponseEntity<List<Usuario>>(list, HttpStatus.OK);
     }
 
     /**

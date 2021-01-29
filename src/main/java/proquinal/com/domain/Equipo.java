@@ -9,6 +9,7 @@ import java.util.Objects;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import proquinal.com.domain.enumeration.State;
 
 /**
@@ -77,6 +78,7 @@ public class Equipo implements Serializable {
     private State tipo;
 
     @OneToMany(mappedBy = "equipo")
+    @JsonIgnore
     private Set<Usuario> usuarios = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

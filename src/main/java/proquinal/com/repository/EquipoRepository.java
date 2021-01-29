@@ -12,6 +12,6 @@ import java.util.Optional;
  */
 @SuppressWarnings("unused")
 @Repository
-public interface EquipoRepository extends JpaRepository<Equipo, Long> {
+public interface EquipoRepository extends JpaRepository<Equipo, Long>,JpaSpecificationExecutor<Equipo> {
     Optional<Equipo> findByActivoFijo(String activoFijo);
 }
