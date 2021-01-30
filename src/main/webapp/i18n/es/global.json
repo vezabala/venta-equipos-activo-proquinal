@@ -138,6 +138,5 @@
     },
     "idequipoexist": "Ya  estas registrado en este equipo puedes elegir otro",
     "activofijoexists": "Ya existe un activo fijo igual en la entidad{{ entityName }}"
-  },
-  "footer": "Pie de página"
+  }
 }

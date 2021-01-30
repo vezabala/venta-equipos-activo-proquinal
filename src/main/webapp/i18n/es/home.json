@@ -1,7 +1,7 @@
 {
   "home": {
-    "title": "¡Bienvenido, Java Hipster!",
-    "subtitle": "Esta es su página de inicio",
+    "title": "Proquinal Equipos En Venta",
+    "subtitle": "Seleccione el tipo equipo que desea ver si portatil o de escritorio (torre grande)",
     "logged": {
       "message": "Está conectado como \"{{username}}\"."
     },
