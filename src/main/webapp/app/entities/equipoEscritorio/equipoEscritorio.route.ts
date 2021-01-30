@@ -8,14 +8,16 @@ import { flatMap } from 'rxjs/operators';
 import { Authority } from 'app/shared/constants/authority.constants';
 import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';
 import { IEquipo, Equipo } from 'app/shared/model/equipo.model';
-import { EquipoService } from './equipo.service';
-import { EquipoComponent } from './equipo.component';
+import { EquipoEscritorioService } from './equipoEscritorio.service';
+import { EquipoEscritorioComponent } from './equipoEscritorio.component';
 import { EquipoUpdateComponent } from 'app/entities/equipo/equipo-update.component';
 import { EquipoDetailComponent } from 'app/entities/equipo/equipo-detail.component';
+import { EquipoEscritorioDetailComponent } from 'app/entities/equipoEscritorio/equipo-Escritorio-detail.component';
+import { EquipoEscritorioUpdateComponent } from 'app/entities/equipoEscritorio/equipo-Escritorio-update.component';
 
 @Injectable({ providedIn: 'root' })
 export class EquipoResolve implements Resolve<IEquipo> {
-  constructor(private service: EquipoService, private router: Router) {}
+  constructor(private service: EquipoEscritorioService, private router: Router) {}
 
   resolve(route: ActivatedRouteSnapshot): Observable<IEquipo> | Observable<never> {
     const id = route.params['id'];
@@ -35,53 +37,53 @@ export class EquipoResolve implements Resolve<IEquipo> {
   }
 }
 
-export const equipoRoute: Routes = [
+export const equipoEscritorioRoute: Routes = [
   {
     path: '',
-    component: EquipoComponent,
+    component: EquipoEscritorioComponent,
     resolve: {
       pagingParams: JhiResolvePagingParams
     },
     data: {
       authorities: [],
       defaultSort: 'id,asc',
-      pageTitle: 'proquiEquiposVentaApp.equipo.home.title'
+      pageTitle: 'proquiEquiposVentaApp.equipoEscritorio.home.title'
     },
     canActivate: [UserRouteAccessService]
   },
   {
     path: ':id/view',
-    component: EquipoDetailComponent,
+    component: EquipoEscritorioDetailComponent,
     resolve: {
       equipo: EquipoResolve
     },
     data: {
       authorities: [],
-      pageTitle: 'proquiEquiposVentaApp.equipo.home.title'
+      pageTitle: 'proquiEquiposVentaApp.equipoEscritorio.home.title'
     },
     canActivate: [UserRouteAccessService]
   },
   {
     path: 'new',
-    component: EquipoUpdateComponent,
+    component: EquipoEscritorioUpdateComponent,
     resolve: {
       equipo: EquipoResolve
     },
     data: {
       authorities: [Authority.USER],
-      pageTitle: 'proquiEquiposVentaApp.equipo.home.title'
+      pageTitle: 'proquiEquiposVentaApp.equipoEscritorio.home.title'
     },
     canActivate: [UserRouteAccessService]
   },
   {
     path: ':id/edit',
-    component: EquipoUpdateComponent,
+    component: EquipoEscritorioUpdateComponent,
     resolve: {
       equipo: EquipoResolve
     },
     data: {
       authorities: [Authority.USER],
-      pageTitle: 'proquiEquiposVentaApp.equipo.home.title'
+      pageTitle: 'proquiEquiposVentaApp.equipoEscritorio.home.title'
     },
     canActivate: [UserRouteAccessService]
   }

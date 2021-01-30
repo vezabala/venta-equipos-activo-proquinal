@@ -8,6 +8,7 @@ import { Authority } from 'app/shared/constants/authority.constants';
 import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';
 import { EquipoComponent } from 'app/entities/equipo/equipo.component';
 import { UsuarioComponent } from 'app/entities/usuario/usuario.component';
+import { EquipoEscritorioComponent } from 'app/entities/equipoEscritorio/equipoEscritorio.component';
 const LAYOUT_ROUTES = [navbarRoute, ...errorRoute];
 
 const routes: Routes = [
@@ -16,7 +17,9 @@ const routes: Routes = [
   { path: '**', redirectTo: 'equipos', pathMatch: 'full' },
   { path: '', component: UsuarioComponent },
   { path: 'usuarios', component: UsuarioComponent },
-  { path: '**', redirectTo: 'usuarios', pathMatch: 'full' }
+  { path: '**', redirectTo: 'usuarios', pathMatch: 'full' },
+  { path: '', component: EquipoEscritorioComponent },
+  { path: 'equipos', component: EquipoEscritorioComponent }
 ];
 
 @NgModule({
