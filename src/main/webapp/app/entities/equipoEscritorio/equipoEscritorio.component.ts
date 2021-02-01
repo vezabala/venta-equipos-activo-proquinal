@@ -26,12 +26,6 @@ export class EquipoEscritorioComponent implements OnInit, OnDestroy {
   ascending!: boolean;
   ngbPaginationPage = 1;
 
-  equiposList: any[] = [];
-  busqueda: BusquedaEquipo = {
-    activoFijo: '',
-    tipo: ''
-  };
-
   constructor(
     protected equipoService: EquipoEscritorioService,
     protected activatedRoute: ActivatedRoute,
@@ -63,18 +57,8 @@ export class EquipoEscritorioComponent implements OnInit, OnDestroy {
       this.predicate = data.pagingParams.predicate;
       this.ngbPaginationPage = data.pagingParams.page;
       this.loadPage();
-      this.listaEquipos();
     });
     this.registerChangeInEquipos();
-  }
-
-  listaEquipos(): void {
-    this.equipoService.equipos(this.busqueda).subscribe(
-      data => {
-        this.equipos = data;
-      },
-      () => this.onError()
-    );
   }
 
   ngOnDestroy(): void {
@@ -116,7 +100,7 @@ export class EquipoEscritorioComponent implements OnInit, OnDestroy {
   protected onSuccess(data: IEquipo[] | null, headers: HttpHeaders, page: number): void {
     this.totalItems = Number(headers.get('X-Total-Count'));
     this.page = page;
-    this.router.navigate(['/equipo'], {
+    this.router.navigate(['/equipoEscritorio'], {
       queryParams: {
         page: this.page,
         size: this.itemsPerPage,
@@ -128,15 +112,5 @@ export class EquipoEscritorioComponent implements OnInit, OnDestroy {
 
   protected onError(): void {
     this.ngbPaginationPage = this.page;
-  }
-
-  clearActivoFijo(): void {
-    this.busqueda.activoFijo = '';
-    this.listaEquipos();
-  }
-  clear(): void {
-    this.busqueda.activoFijo = '';
-    this.busqueda.tipo = '';
-    this.listaEquipos();
   }
 }

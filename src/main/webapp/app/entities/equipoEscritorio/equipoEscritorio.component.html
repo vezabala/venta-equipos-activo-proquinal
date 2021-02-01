@@ -1,56 +1,7 @@
 <div>
     <h2 id="page-heading">
-        <span jhiTranslate="proquiEquiposVentaApp.equipo.home.title">Equipos</span>
-
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-equipo" [routerLink]="['/equipo/new']">
-            <fa-icon icon="plus"></fa-icon>
-            <span  jhiTranslate="proquiEquiposVentaApp.equipo.home.createLabel">
-            Create a new Equipo
-            </span>
-        </button>
+        <span>Equipos de escritorio</span>
     </h2>
-
-    <jhi-alert-error></jhi-alert-error>
-
-    <jhi-alert></jhi-alert>
-
-    <div class="alert alert-warning" id="no-result" *ngIf="equipos?.length === 0">
-        <span jhiTranslate="proquiEquiposVentaApp.equipo.home.notFound">No equipos found</span>
-    </div>
-    <div class="container mb-5">
-        <form>
-            <div class="row">
-                <div class="col">
-                    <div class="form-group">
-                        <label for="activoFijo"><b>activo fijo:</b></label>
-                        <div class="input-group">
-                            <button class="btn btn-outline-danger" (click)="clearActivoFijo()"
-                                    [disabled]="!busqueda.activoFijo">Vaciar</button>
-                            <input type="text" class="form-control" name="activoFijo" id="activoFijo"
-                                   [(ngModel)]="busqueda.activoFijo">
-                            <button class="btn btn-outline-success" (click)="listaEquipos()"
-                                    [disabled]="!busqueda.activoFijo">Filtrar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col4">
-                    <div class="form-group">
-                        <label for="tipo"><b>tipo:</b></label>
-                        <select class="form-control" name="tipo" id="tipo"
-                                [(ngModel)]="busqueda.tipo" (change)="listaEquipos()">
-                            <option value="" selected>Escritorio</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col4">
-                    <label for="reseter"><b>Resetear:</b></label>
-                    <button class="btn btn-outline-danger form-control" (click)="clear()" id="reseter">Actualizar tabla y borrar Filtros</button>
-                </div>
-            </div>
-        </form>
-    </div>
 
     <div class="table-responsive" id="entities" *ngIf="equipos?.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
@@ -83,18 +34,18 @@
                     <td>{{ equipo.observaciones }}</td>
                     <td>
                         <a *ngIf="equipo.imgUrl" (click)="openFile(equipo.imgUrlContentType, equipo.imgUrl)">
-                            <img [src]="'data:' + equipo.imgUrlContentType + ';base64,' + equipo.imgUrl" style="max-height: 30px;" alt="equipo image"/>
+                            <img [src]="'data:' + equipo.imgUrlContentType + ';base64,' + equipo.imgUrl" style="max-height: 80px;" alt="equipo image"/>
                         </a>
-                        <span *ngIf="equipo.imgUrl">{{ equipo.imgUrlContentType }}, {{ byteSize(equipo.imgUrl) }}</span>
+                        <span *ngIf="equipo.imgUrl">{{ equipo.imgUrlContentType }}</span>
                     </td>
                     <td jhiTranslate="{{ 'proquiEquiposVentaApp.State.' + equipo.tipo }}">{{ equipo.tipo }}</td>
                     <td class="text-right">
                         <div class="btn-group">
-                            <button type="submit"
+                            <button type="button"
                                     [routerLink]="['/equipoEscritorio', equipo.id, 'view']"
-                                    class="btn btn-info btn-sm">
+                                    class="btn btn-info" data-toggle="button" aria-pressed="false" autocomplete="off">
                                 <fa-icon icon="eye"></fa-icon>
-                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.viewEscritorio">View</span>
                             </button>
                         </div>
                     </td>

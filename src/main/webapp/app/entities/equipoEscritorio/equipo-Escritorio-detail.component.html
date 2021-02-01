@@ -1,13 +1,22 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <div *ngIf="equipo">
-            <h2><span jhiTranslate="proquiEquiposVentaApp.equipo.detail.title">Equipo</span> {{ equipo.id }}</h2>
+            <h2>Equipo de Escritorio {{ equipo.activoFijo }}</h2>
 
             <hr>
 
             <jhi-alert-error></jhi-alert-error>
 
             <dl class="row-md jh-entity-details">
+
+                <dd>
+                    <div *ngIf="equipo.imgUrl">
+                        <a (click)="openFile(equipo?.imgUrlContentType!, equipo?.imgUrl)">
+                            <img [src]="'data:' + equipo.imgUrlContentType + ';base64,' + equipo.imgUrl" style= "float:left; max-width: 80%;" alt="equipo image"/>
+                        </a>
+                        {{ equipo.imgUrlContentType }}
+                    </div>
+                </dd>
                 <dt><span jhiTranslate="proquiEquiposVentaApp.equipo.activoFijo">Activo Fijo</span></dt>
                 <dd>
                     <span>{{ equipo.activoFijo }}</span>
@@ -24,6 +33,18 @@
                 <dd>
                     <span>{{ equipo.office }}</span>
                 </dd>
+                <div class="volver">
+                    <dt><span>Ten en cuenta el activo fijo</span></dt>
+                    <button type="submit"
+                            (click)="previousState()"
+                            class="btn btn-danger" >
+                        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+                    </button>
+                    <button type="submit"
+                            class="btn btn-info" >
+                        <span>Inscribirme</span>
+                    </button>
+                </div>
                 <dt><span jhiTranslate="proquiEquiposVentaApp.equipo.sistemaOperativo">Sistema Operativo</span></dt>
                 <dd>
                     <span>{{ equipo.sistemaOperativo }}</span>
@@ -40,26 +61,14 @@
                 <dd>
                     <span>{{ equipo.observaciones }}</span>
                 </dd>
-                <dt><span jhiTranslate="proquiEquiposVentaApp.equipo.imgUrl">Img Url</span></dt>
-                <dd>
-                    <div *ngIf="equipo.imgUrl">
-                        <a (click)="openFile(equipo?.imgUrlContentType!, equipo?.imgUrl)">
-                            <img [src]="'data:' + equipo.imgUrlContentType + ';base64,' + equipo.imgUrl" style="max-width: 100%;" alt="equipo image"/>
-                        </a>
-                        {{ equipo.imgUrlContentType }}, {{ byteSize(equipo.imgUrl) }}
-                    </div>
-                </dd>
                 <dt><span jhiTranslate="proquiEquiposVentaApp.equipo.tipo">Tipo</span></dt>
                 <dd>
                     <span jhiTranslate="{{ 'proquiEquiposVentaApp.State.' + equipo.tipo }}">{{ equipo.tipo }}</span>
                 </dd>
             </dl>
-
-            <button type="submit"
-                    (click)="previousState()"
-                    class="btn btn-info">
-                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
-            </button>
+            <style>
+                .volver {float: right;}
+            </style>
         </div>
     </div>
 </div>

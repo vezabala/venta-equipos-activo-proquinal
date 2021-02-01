@@ -13,6 +13,7 @@ type EntityArrayResponseType = HttpResponse<IEquipo[]>;
 @Injectable({ providedIn: 'root' })
 export class EquipoEscritorioService {
   public resourceUrl = SERVER_API_URL + 'api/equipos';
+  public resourceUrlEscritorio = SERVER_API_URL + 'api/equiposEscritorio';
 
   constructor(protected http: HttpClient) {}
 
@@ -30,14 +31,10 @@ export class EquipoEscritorioService {
 
   query(req?: any): Observable<EntityArrayResponseType> {
     const options = createRequestOption(req);
-    return this.http.get<IEquipo[]>(this.resourceUrl, { params: options, observe: 'response' });
+    return this.http.get<IEquipo[]>(this.resourceUrlEscritorio, { params: options, observe: 'response' });
   }
 
   delete(id: number): Observable<HttpResponse<{}>> {
     return this.http.delete(`${this.resourceUrl}/${id}`, { observe: 'response' });
-  }
-
-  equipos(busqueda: BusquedaEquipo): Observable<any[]> {
-    return this.http.post<any[]>(this.resourceUrl + '/list', busqueda);
   }
 }

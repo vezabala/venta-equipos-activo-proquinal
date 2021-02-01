@@ -43,7 +43,7 @@ export const equipoRoute: Routes = [
       pagingParams: JhiResolvePagingParams
     },
     data: {
-      authorities: [],
+      authorities: [Authority.USER],
       defaultSort: 'id,asc',
       pageTitle: 'proquiEquiposVentaApp.equipo.home.title'
     },
@@ -56,7 +56,7 @@ export const equipoRoute: Routes = [
       equipo: EquipoResolve
     },
     data: {
-      authorities: [],
+      authorities: [Authority.USER],
       pageTitle: 'proquiEquiposVentaApp.equipo.home.title'
     },
     canActivate: [UserRouteAccessService]

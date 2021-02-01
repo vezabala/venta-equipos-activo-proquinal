@@ -167,7 +167,6 @@ public class EquipoResource {
         return new ResponseEntity<List<Equipo>>(list, HttpStatus.OK);
     }
 
-
     /**
      * {@code GET  /equipos/:id} : get the "id" equipo.
      *

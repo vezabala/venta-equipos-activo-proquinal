@@ -9,6 +9,7 @@
         "main": "Entidades",
         "usuario": "Usuario",
         "equipo": "Equipo",
+        "equipoEscritorio": "EsquipoEscritorio",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {
@@ -100,7 +101,8 @@
       "edit": "Editar",
       "open": "Abrir",
       "save": "Guardar",
-      "view": "Vista"
+      "view": "Vista",
+      "viewEscritorio": "Ver descripcion"
     },
     "detail": {
       "field": "Campo",
