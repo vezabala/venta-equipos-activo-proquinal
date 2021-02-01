@@ -1,12 +1,15 @@
 package proquinal.com.web.rest;
 
 import io.github.jhipster.service.filter.StringFilter;
+import io.micrometer.core.annotation.Timed;
 import io.micrometer.core.instrument.util.StringUtils;
+import io.swagger.annotations.ApiParam;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import proquinal.com.criteria.EquipoCriteria;
 import proquinal.com.domain.Equipo;
 import proquinal.com.domain.enumeration.State;
+import proquinal.com.repository.EquipoRepository;
 import proquinal.com.security.AuthoritiesConstants;
 import proquinal.com.service.EquipoService;
 import proquinal.com.service.EquipoServiceQuery;
@@ -51,10 +54,14 @@ public class EquipoResource {
 
     private final EquipoServiceQuery equipoServiceQuery;
 
-    public EquipoResource(EquipoService equipoService, EquipoServiceQuery equipoServiceQuery) {
+
+    public EquipoResource(EquipoService equipoService, EquipoServiceQuery equipoServiceQuery, EquipoRepository equipoRepository) {
         this.equipoService = equipoService;
         this.equipoServiceQuery = equipoServiceQuery;
+        this.equipoRepository = equipoRepository;
     }
+
+    private EquipoRepository equipoRepository;
 
     /**
      * {@code POST  /equipos} : Create a new equipo.
@@ -116,6 +123,15 @@ public class EquipoResource {
     public ResponseEntity<List<EquipoDTO>> getAllEquipos(Pageable pageable) {
         log.debug("REST request to get a page of Equipos");
         Page<EquipoDTO> page = equipoService.findAll(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
+
+    @GetMapping("/equiposEscritorio")
+    @Timed
+    public ResponseEntity<List<Equipo>> getAllEquiposEscritorio(@ApiParam Pageable pageable) {
+        log.debug("REST request to get a page of Equipos");
+        Page<Equipo> page = equipoRepository.findByTipo(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
