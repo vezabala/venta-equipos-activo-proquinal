@@ -85,6 +85,24 @@
             "fieldValidateRules": [
                 "required"
             ]
+        },
+        {
+            "fieldName": "windowss",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "70"
+        },
+        {
+            "fieldName": "precio",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "70"
         }
     ],
     "relationships": [
@@ -105,5 +123,7 @@
     "readOnly": false,
     "embedded": false,
     "clientRootFolder": "",
-    "applications": "*"
+    "applications": "*",
+    "searchEngine": false,
+    "databaseType": "sql"
 }

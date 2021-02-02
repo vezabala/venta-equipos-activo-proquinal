@@ -70,7 +70,6 @@ public class EquipoService {
             .map(equipoMapper::toDto);
     }
 
-
     /**
      * Get one equipo by id.
      *

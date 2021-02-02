@@ -61,6 +61,7 @@
                     <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="activoFijo"><span jhiTranslate="proquiEquiposVentaApp.equipo.activoFijo">Activo Fijo</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="marca"><span jhiTranslate="proquiEquiposVentaApp.equipo.marca">Marca</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="windowss"><span jhiTranslate="proquiEquiposVentaApp.equipo.windowss">Windowss</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="procesador"><span jhiTranslate="proquiEquiposVentaApp.equipo.procesador">Procesador</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="office"><span jhiTranslate="proquiEquiposVentaApp.equipo.office">Office</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="sistemaOperativo"><span jhiTranslate="proquiEquiposVentaApp.equipo.sistemaOperativo">Sistema Operativo</span> <fa-icon icon="sort"></fa-icon></th>
@@ -69,6 +70,7 @@
                     <th scope="col"  jhiSortBy="observaciones"><span jhiTranslate="proquiEquiposVentaApp.equipo.observaciones">Observaciones</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="imgUrl"><span jhiTranslate="proquiEquiposVentaApp.equipo.imgUrl">Img Url</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="tipo"><span jhiTranslate="proquiEquiposVentaApp.equipo.tipo">Tipo</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="precio"><span jhiTranslate="proquiEquiposVentaApp.equipo.precio">Precio</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -77,6 +79,7 @@
                     <td><a [routerLink]="['/equipo', equipo.id, 'view']">{{ equipo.id }}</a></td>
                     <td>{{ equipo.activoFijo }}</td>
                     <td>{{ equipo.marca }}</td>
+                    <td>{{ equipo.windowss }}</td>
                     <td>{{ equipo.procesador }}</td>
                     <td>{{ equipo.office }}</td>
                     <td>{{ equipo.sistemaOperativo }}</td>
@@ -90,6 +93,7 @@
                         <span *ngIf="equipo.imgUrl">{{ equipo.imgUrlContentType }}, {{ byteSize(equipo.imgUrl) }}</span>
                     </td>
                     <td jhiTranslate="{{ 'proquiEquiposVentaApp.State.' + equipo.tipo }}">{{ equipo.tipo }}</td>
+                    <td>$ {{ equipo.precio }}</td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

@@ -25,6 +25,10 @@
                 <dd>
                     <span>{{ equipo.marca }}</span>
                 </dd>
+                <dt><span jhiTranslate="proquiEquiposVentaApp.equipo.windowss">Windowss</span></dt>
+                <dd>
+                    <span>{{ equipo.windowss }}</span>
+                </dd>
                 <dt><span jhiTranslate="proquiEquiposVentaApp.equipo.procesador">Procesador</span></dt>
                 <dd>
                     <span>{{ equipo.procesador }}</span>
@@ -34,7 +38,15 @@
                     <span>{{ equipo.office }}</span>
                 </dd>
                 <div class="volver">
-                    <dt><span>Ten en cuenta el activo fijo</span></dt>
+                    <h2>
+                        <dt><span jhiTranslate="proquiEquiposVentaApp.equipo.precio">Precio</span></dt>
+                    </h2>
+                    <dd>
+                        <h2>
+                            <span>$ {{ equipo.precio }}</span>
+                        </h2>
+                    </dd>
+                    <dt><span>Ten en cuenta el activo fijo para inscripcion</span></dt>
                     <button type="submit"
                             (click)="previousState()"
                             class="btn btn-danger" >

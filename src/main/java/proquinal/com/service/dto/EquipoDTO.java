@@ -51,6 +51,14 @@ public class EquipoDTO implements Serializable {
     @NotNull
     private State tipo;
 
+    @NotNull
+    @Size(max = 70)
+    private String windowss;
+
+    @NotNull
+    @Size(max = 70)
+    private String precio;
+
     
     public Long getId() {
         return id;
@@ -148,6 +156,22 @@ public class EquipoDTO implements Serializable {
         this.tipo = tipo;
     }
 
+    public String getWindowss() {
+        return windowss;
+    }
+
+    public void setWindowss(String windowss) {
+        this.windowss = windowss;
+    }
+
+    public String getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(String precio) {
+        this.precio = precio;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -183,6 +207,8 @@ public class EquipoDTO implements Serializable {
             ", observaciones='" + getObservaciones() + "'" +
             ", imgUrl='" + getImgUrl() + "'" +
             ", tipo='" + getTipo() + "'" +
+            ", windowss='" + getWindowss() + "'" +
+            ", precio='" + getPrecio() + "'" +
             "}";
     }
 }

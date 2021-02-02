@@ -33,7 +33,9 @@ describe('Service Tests', () => {
         'AAAAAAA',
         'image/png',
         'AAAAAAA',
-        State.ESCRITORIO
+        State.ESCRITORIO,
+        'AAAAAAA',
+        'AAAAAAA'
       );
     });
 
@@ -77,7 +79,9 @@ describe('Service Tests', () => {
             ram: 'BBBBBB',
             observaciones: 'BBBBBB',
             imgUrl: 'BBBBBB',
-            tipo: 'BBBBBB'
+            tipo: 'BBBBBB',
+            windowss: 'BBBBBB',
+            precio: 'BBBBBB'
           },
           elemDefault
         );
@@ -103,7 +107,9 @@ describe('Service Tests', () => {
             ram: 'BBBBBB',
             observaciones: 'BBBBBB',
             imgUrl: 'BBBBBB',
-            tipo: 'BBBBBB'
+            tipo: 'BBBBBB',
+            windowss: 'BBBBBB',
+            precio: 'BBBBBB'
           },
           elemDefault
         );

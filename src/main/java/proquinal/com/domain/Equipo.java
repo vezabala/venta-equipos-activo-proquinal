@@ -9,7 +9,6 @@ import java.util.Objects;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import proquinal.com.domain.enumeration.State;
 
 /**
@@ -77,8 +76,17 @@ public class Equipo implements Serializable {
     @Column(name = "tipo", nullable = false)
     private State tipo;
 
+    @NotNull
+    @Size(max = 70)
+    @Column(name = "windowss", length = 70, nullable = false)
+    private String windowss;
+
+    @NotNull
+    @Size(max = 70)
+    @Column(name = "precio", length = 70, nullable = false)
+    private String precio;
+
     @OneToMany(mappedBy = "equipo")
-    @JsonIgnore
     private Set<Usuario> usuarios = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
@@ -233,6 +241,32 @@ public class Equipo implements Serializable {
         this.tipo = tipo;
     }
 
+    public String getWindowss() {
+        return windowss;
+    }
+
+    public Equipo windowss(String windowss) {
+        this.windowss = windowss;
+        return this;
+    }
+
+    public void setWindowss(String windowss) {
+        this.windowss = windowss;
+    }
+
+    public String getPrecio() {
+        return precio;
+    }
+
+    public Equipo precio(String precio) {
+        this.precio = precio;
+        return this;
+    }
+
+    public void setPrecio(String precio) {
+        this.precio = precio;
+    }
+
     public Set<Usuario> getUsuarios() {
         return usuarios;
     }
@@ -290,6 +324,8 @@ public class Equipo implements Serializable {
             ", imgUrl='" + getImgUrl() + "'" +
             ", imgUrlContentType='" + getImgUrlContentType() + "'" +
             ", tipo='" + getTipo() + "'" +
+            ", windowss='" + getWindowss() + "'" +
+            ", precio='" + getPrecio() + "'" +
             "}";
     }
 }

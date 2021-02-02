@@ -29,7 +29,9 @@ export class EquipoUpdateComponent implements OnInit {
     observaciones: [null, [Validators.maxLength(200)]],
     imgUrl: [],
     imgUrlContentType: [],
-    tipo: [null, [Validators.required]]
+    tipo: [null, [Validators.required]],
+    windowss: [null, [Validators.required, Validators.maxLength(70)]],
+    precio: [null, [Validators.required, Validators.maxLength(70)]]
   });
 
   constructor(
@@ -60,7 +62,9 @@ export class EquipoUpdateComponent implements OnInit {
       observaciones: equipo.observaciones,
       imgUrl: equipo.imgUrl,
       imgUrlContentType: equipo.imgUrlContentType,
-      tipo: equipo.tipo
+      tipo: equipo.tipo,
+      windowss: equipo.windowss,
+      precio: equipo.precio
     });
   }
 
@@ -118,7 +122,9 @@ export class EquipoUpdateComponent implements OnInit {
       observaciones: this.editForm.get(['observaciones'])!.value,
       imgUrlContentType: this.editForm.get(['imgUrlContentType'])!.value,
       imgUrl: this.editForm.get(['imgUrl'])!.value,
-      tipo: this.editForm.get(['tipo'])!.value
+      tipo: this.editForm.get(['tipo'])!.value,
+      windowss: this.editForm.get(['windowss'])!.value,
+      precio: this.editForm.get(['precio'])!.value
     };
   }
 

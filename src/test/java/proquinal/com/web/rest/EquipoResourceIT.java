@@ -67,6 +67,12 @@ public class EquipoResourceIT {
     private static final State DEFAULT_TIPO = State.ESCRITORIO;
     private static final State UPDATED_TIPO = State.PORTATIL;
 
+    private static final String DEFAULT_WINDOWSS = "AAAAAAAAAA";
+    private static final String UPDATED_WINDOWSS = "BBBBBBBBBB";
+
+    private static final String DEFAULT_PRECIO = "AAAAAAAAAA";
+    private static final String UPDATED_PRECIO = "BBBBBBBBBB";
+
     @Autowired
     private EquipoRepository equipoRepository;
 
@@ -102,7 +108,9 @@ public class EquipoResourceIT {
             .observaciones(DEFAULT_OBSERVACIONES)
             .imgUrl(DEFAULT_IMG_URL)
             .imgUrlContentType(DEFAULT_IMG_URL_CONTENT_TYPE)
-            .tipo(DEFAULT_TIPO);
+            .tipo(DEFAULT_TIPO)
+            .windowss(DEFAULT_WINDOWSS)
+            .precio(DEFAULT_PRECIO);
         return equipo;
     }
     /**
@@ -123,7 +131,9 @@ public class EquipoResourceIT {
             .observaciones(UPDATED_OBSERVACIONES)
             .imgUrl(UPDATED_IMG_URL)
             .imgUrlContentType(UPDATED_IMG_URL_CONTENT_TYPE)
-            .tipo(UPDATED_TIPO);
+            .tipo(UPDATED_TIPO)
+            .windowss(UPDATED_WINDOWSS)
+            .precio(UPDATED_PRECIO);
         return equipo;
     }
 
@@ -159,6 +169,8 @@ public class EquipoResourceIT {
         assertThat(testEquipo.getImgUrl()).isEqualTo(DEFAULT_IMG_URL);
         assertThat(testEquipo.getImgUrlContentType()).isEqualTo(DEFAULT_IMG_URL_CONTENT_TYPE);
         assertThat(testEquipo.getTipo()).isEqualTo(DEFAULT_TIPO);
+        assertThat(testEquipo.getWindowss()).isEqualTo(DEFAULT_WINDOWSS);
+        assertThat(testEquipo.getPrecio()).isEqualTo(DEFAULT_PRECIO);
     }
 
     @Test
@@ -336,6 +348,44 @@ public class EquipoResourceIT {
 
     @Test
     @Transactional
+    public void checkWindowssIsRequired() throws Exception {
+        int databaseSizeBeforeTest = equipoRepository.findAll().size();
+        // set the field null
+        equipo.setWindowss(null);
+
+        // Create the Equipo, which fails.
+        EquipoDTO equipoDTO = equipoMapper.toDto(equipo);
+
+        restEquipoMockMvc.perform(post("/api/equipos")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(equipoDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Equipo> equipoList = equipoRepository.findAll();
+        assertThat(equipoList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkPrecioIsRequired() throws Exception {
+        int databaseSizeBeforeTest = equipoRepository.findAll().size();
+        // set the field null
+        equipo.setPrecio(null);
+
+        // Create the Equipo, which fails.
+        EquipoDTO equipoDTO = equipoMapper.toDto(equipo);
+
+        restEquipoMockMvc.perform(post("/api/equipos")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(equipoDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Equipo> equipoList = equipoRepository.findAll();
+        assertThat(equipoList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllEquipos() throws Exception {
         // Initialize the database
         equipoRepository.saveAndFlush(equipo);
@@ -355,9 +405,11 @@ public class EquipoResourceIT {
             .andExpect(jsonPath("$.[*].observaciones").value(hasItem(DEFAULT_OBSERVACIONES)))
             .andExpect(jsonPath("$.[*].imgUrlContentType").value(hasItem(DEFAULT_IMG_URL_CONTENT_TYPE)))
             .andExpect(jsonPath("$.[*].imgUrl").value(hasItem(Base64Utils.encodeToString(DEFAULT_IMG_URL))))
-            .andExpect(jsonPath("$.[*].tipo").value(hasItem(DEFAULT_TIPO.toString())));
+            .andExpect(jsonPath("$.[*].tipo").value(hasItem(DEFAULT_TIPO.toString())))
+            .andExpect(jsonPath("$.[*].windowss").value(hasItem(DEFAULT_WINDOWSS)))
+            .andExpect(jsonPath("$.[*].precio").value(hasItem(DEFAULT_PRECIO)));
     }
-
+    
     @Test
     @Transactional
     public void getEquipo() throws Exception {
@@ -379,7 +431,9 @@ public class EquipoResourceIT {
             .andExpect(jsonPath("$.observaciones").value(DEFAULT_OBSERVACIONES))
             .andExpect(jsonPath("$.imgUrlContentType").value(DEFAULT_IMG_URL_CONTENT_TYPE))
             .andExpect(jsonPath("$.imgUrl").value(Base64Utils.encodeToString(DEFAULT_IMG_URL)))
-            .andExpect(jsonPath("$.tipo").value(DEFAULT_TIPO.toString()));
+            .andExpect(jsonPath("$.tipo").value(DEFAULT_TIPO.toString()))
+            .andExpect(jsonPath("$.windowss").value(DEFAULT_WINDOWSS))
+            .andExpect(jsonPath("$.precio").value(DEFAULT_PRECIO));
     }
 
     @Test
@@ -413,7 +467,9 @@ public class EquipoResourceIT {
             .observaciones(UPDATED_OBSERVACIONES)
             .imgUrl(UPDATED_IMG_URL)
             .imgUrlContentType(UPDATED_IMG_URL_CONTENT_TYPE)
-            .tipo(UPDATED_TIPO);
+            .tipo(UPDATED_TIPO)
+            .windowss(UPDATED_WINDOWSS)
+            .precio(UPDATED_PRECIO);
         EquipoDTO equipoDTO = equipoMapper.toDto(updatedEquipo);
 
         restEquipoMockMvc.perform(put("/api/equipos")
@@ -436,6 +492,8 @@ public class EquipoResourceIT {
         assertThat(testEquipo.getImgUrl()).isEqualTo(UPDATED_IMG_URL);
         assertThat(testEquipo.getImgUrlContentType()).isEqualTo(UPDATED_IMG_URL_CONTENT_TYPE);
         assertThat(testEquipo.getTipo()).isEqualTo(UPDATED_TIPO);
+        assertThat(testEquipo.getWindowss()).isEqualTo(UPDATED_WINDOWSS);
+        assertThat(testEquipo.getPrecio()).isEqualTo(UPDATED_PRECIO);
     }
 
     @Test

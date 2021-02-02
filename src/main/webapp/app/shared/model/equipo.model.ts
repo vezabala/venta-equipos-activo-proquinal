@@ -14,6 +14,8 @@ export interface IEquipo {
   imgUrlContentType?: string;
   imgUrl?: any;
   tipo?: State;
+  windowss?: string;
+  precio?: string;
   usuarios?: IUsuario[];
 }
 
@@ -31,6 +33,8 @@ export class Equipo implements IEquipo {
     public imgUrlContentType?: string,
     public imgUrl?: any,
     public tipo?: State,
+    public windowss?: string,
+    public precio?: string,
     public usuarios?: IUsuario[]
   ) {}
 }
