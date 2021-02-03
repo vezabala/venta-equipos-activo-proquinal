@@ -130,8 +130,17 @@ public class EquipoResource {
     @GetMapping("/equiposEscritorio")
     @Timed
     public ResponseEntity<List<Equipo>> getAllEquiposEscritorio(@ApiParam Pageable pageable) {
-        log.debug("REST request to get a page of Equipos");
+        log.debug("REST request to get a page of EquiposEscritorio");
         Page<Equipo> page = equipoRepository.findByTipo(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
+
+    @GetMapping("/equiposPortatil")
+    @Timed
+    public ResponseEntity<List<Equipo>> getAllEquiposPortatil(@ApiParam Pageable pageable) {
+        log.debug("REST request to get a page of EquiposPortatil");
+        Page<Equipo> page = equipoRepository.findByTipoPortatil(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }

@@ -1,6 +1,6 @@
 <div>
     <h2 id="page-heading">
-        <span>Equipos de escritorio</span>
+        <span>Equipos portatiles</span>
     </h2>
 
     <div class="table-responsive" id="entities" *ngIf="equipos?.length > 0">
@@ -25,7 +25,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let equipo of equipos ;trackBy: trackId">
-                    <td><a [routerLink]="['/equipoEscritorio', equipo.id, 'view']">{{ equipo.id }}</a></td>
+                    <td><a [routerLink]="['/equipoPortatil', equipo.id, 'view']">{{ equipo.id }}</a></td>
                     <td>{{ equipo.activoFijo }}</td>
                     <td>{{ equipo.marca }}</td>
                     <td>{{ equipo.windowss }}</td>
@@ -46,7 +46,7 @@
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="button"
-                                    [routerLink]="['/equipoEscritorio', equipo.id, 'view']"
+                                    [routerLink]="['/equipoPortatil', equipo.id, 'view']"
                                     class="btn btn-info" data-toggle="button" aria-pressed="false" autocomplete="off">
                                 <fa-icon icon="eye"></fa-icon>
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.viewEscritorio">View</span>

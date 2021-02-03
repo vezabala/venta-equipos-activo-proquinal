@@ -19,4 +19,7 @@ public interface EquipoRepository extends JpaRepository<Equipo, Long>,JpaSpecifi
 
     @Query("SELECT e FROM Equipo e WHERE e.tipo ='ESCRITORIO'")
     Page<Equipo> findByTipo(Pageable pageable);
+
+    @Query("SELECT e FROM Equipo e WHERE e.tipo ='PORTATIL'")
+    Page<Equipo> findByTipoPortatil(Pageable pageable);
 }

@@ -8,16 +8,14 @@ import { flatMap } from 'rxjs/operators';
 import { Authority } from 'app/shared/constants/authority.constants';
 import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';
 import { IEquipo, Equipo } from 'app/shared/model/equipo.model';
-import { EquipoEscritorioService } from './equipoEscritorio.service';
-import { EquipoEscritorioComponent } from './equipoEscritorio.component';
-import { EquipoUpdateComponent } from 'app/entities/equipo/equipo-update.component';
-import { EquipoDetailComponent } from 'app/entities/equipo/equipo-detail.component';
-import { EquipoEscritorioDetailComponent } from 'app/entities/equipoEscritorio/equipo-Escritorio-detail.component';
-import { EquipoEscritorioUpdateComponent } from 'app/entities/equipoEscritorio/equipo-Escritorio-update.component';
+import { EquipoPortatilService } from './equipoPortatil.service';
+import { EquipoPortatilComponent } from './equipoPortatil.component';
+import { EquipoPortatilDetailComponent } from 'app/entities/equipoPortaril/equipo-Portatil-detail.component';
+import { EquipoPortatilUpdateComponent } from 'app/entities/equipoPortaril/equipo-Portatil-update.component';
 
 @Injectable({ providedIn: 'root' })
 export class EquipoResolve implements Resolve<IEquipo> {
-  constructor(private service: EquipoEscritorioService, private router: Router) {}
+  constructor(private service: EquipoPortatilService, private router: Router) {}
 
   resolve(route: ActivatedRouteSnapshot): Observable<IEquipo> | Observable<never> {
     const id = route.params['id'];
@@ -37,10 +35,10 @@ export class EquipoResolve implements Resolve<IEquipo> {
   }
 }
 
-export const equipoEscritorioRoute: Routes = [
+export const equipoPortatilRoute: Routes = [
   {
     path: '',
-    component: EquipoEscritorioComponent,
+    component: EquipoPortatilComponent,
     resolve: {
       pagingParams: JhiResolvePagingParams
     },
@@ -53,7 +51,7 @@ export const equipoEscritorioRoute: Routes = [
   },
   {
     path: ':id/view',
-    component: EquipoEscritorioDetailComponent,
+    component: EquipoPortatilDetailComponent,
     resolve: {
       equipo: EquipoResolve
     },
@@ -65,7 +63,7 @@ export const equipoEscritorioRoute: Routes = [
   },
   {
     path: 'new',
-    component: EquipoEscritorioUpdateComponent,
+    component: EquipoPortatilUpdateComponent,
     resolve: {
       equipo: EquipoResolve
     },
@@ -77,7 +75,7 @@ export const equipoEscritorioRoute: Routes = [
   },
   {
     path: ':id/edit',
-    component: EquipoEscritorioUpdateComponent,
+    component: EquipoPortatilUpdateComponent,
     resolve: {
       equipo: EquipoResolve
     },
