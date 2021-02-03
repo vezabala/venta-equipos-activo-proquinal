@@ -11,15 +11,7 @@
                     <th scope="col"  jhiSortBy="activoFijo"><span jhiTranslate="proquiEquiposVentaApp.equipo.activoFijo">Activo Fijo</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="marca"><span jhiTranslate="proquiEquiposVentaApp.equipo.marca">Marca</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="windowss"><span jhiTranslate="proquiEquiposVentaApp.equipo.windowss">Windowss</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="procesador"><span jhiTranslate="proquiEquiposVentaApp.equipo.procesador">Procesador</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="office"><span jhiTranslate="proquiEquiposVentaApp.equipo.office">Office</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="sistemaOperativo"><span jhiTranslate="proquiEquiposVentaApp.equipo.sistemaOperativo">Sistema Operativo</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="discoDuro"><span jhiTranslate="proquiEquiposVentaApp.equipo.discoDuro">Disco Duro</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="ram"><span jhiTranslate="proquiEquiposVentaApp.equipo.ram">Ram</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="observaciones"><span jhiTranslate="proquiEquiposVentaApp.equipo.observaciones">Observaciones</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="imgUrl"><span jhiTranslate="proquiEquiposVentaApp.equipo.imgUrl">Img Url</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="tipo"><span jhiTranslate="proquiEquiposVentaApp.equipo.tipo">Tipo</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="precio"><span jhiTranslate="proquiEquiposVentaApp.equipo.precio">Precio</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -29,20 +21,7 @@
                     <td>{{ equipo.activoFijo }}</td>
                     <td>{{ equipo.marca }}</td>
                     <td>{{ equipo.windowss }}</td>
-                    <td>{{ equipo.procesador }}</td>
-                    <td>{{ equipo.office }}</td>
-                    <td>{{ equipo.sistemaOperativo }}</td>
-                    <td>{{ equipo.discoDuro }}</td>
-                    <td>{{ equipo.ram }}</td>
-                    <td>{{ equipo.observaciones }}</td>
-                    <td>
-                        <a *ngIf="equipo.imgUrl" (click)="openFile(equipo.imgUrlContentType, equipo.imgUrl)">
-                            <img [src]="'data:' + equipo.imgUrlContentType + ';base64,' + equipo.imgUrl" style="max-height: 80px;" alt="equipo image"/>
-                        </a>
-                        <span *ngIf="equipo.imgUrl">{{ equipo.imgUrlContentType }}</span>
-                    </td>
                     <td jhiTranslate="{{ 'proquiEquiposVentaApp.State.' + equipo.tipo }}">{{ equipo.tipo }}</td>
-                    <td>$ {{ equipo.precio }}</td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="button"

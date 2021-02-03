@@ -12,6 +12,20 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="proquiEquiposVentaApp.usuario.equipo" for="field_equipo">Equipo</label>
+                    <select class="form-control" id="field_equipo" name="equipo" formControlName="equipoId">
+                        <option *ngIf="!editForm.get('equipoId')!.value" [ngValue]="null" selected></option>
+                        <option [ngValue]="equipoOption.id" *ngFor="let equipoOption of equipos; trackBy: trackById">{{ equipoOption.activoFijo }}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('equipoId')!.invalid && (editForm.get('equipoId')!.dirty || editForm.get('equipoId')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('equipoId')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+
+                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="proquiEquiposVentaApp.usuario.numeroDocumento" for="field_numeroDocumento">Numero Documento</label>
                     <input type="text" class="form-control" name="numeroDocumento" id="field_numeroDocumento"
                            formControlName="numeroDocumento"/>
@@ -89,20 +103,6 @@
                         This field cannot be longer than 50 characters.
                         </small>
                     </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="proquiEquiposVentaApp.usuario.equipo" for="field_equipo">Equipo</label>
-                    <select class="form-control" id="field_equipo" name="equipo" formControlName="equipoId">
-                        <option *ngIf="!editForm.get('equipoId')!.value" [ngValue]="null" selected></option>
-                        <option [ngValue]="equipoOption.id" *ngFor="let equipoOption of equipos; trackBy: trackById">{{ equipoOption.activoFijo }}</option>
-                    </select>
-                </div>
-                <div *ngIf="editForm.get('equipoId')!.invalid && (editForm.get('equipoId')!.dirty || editForm.get('equipoId')!.touched)">
-                    <small class="form-text text-danger"
-                           *ngIf="editForm.get('equipoId')?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
-                    </small>
                 </div>
             </div>
 
