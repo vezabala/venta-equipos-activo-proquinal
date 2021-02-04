@@ -9,6 +9,8 @@ import { IUsuario, Usuario } from 'app/shared/model/usuario.model';
 import { UsuarioService } from './usuario.service';
 import { IEquipo } from 'app/shared/model/equipo.model';
 import { EquipoService } from 'app/entities/equipo/equipo.service';
+import { UsuarioGuardadoeDialogComponent } from 'app/entities/usuario/usuario-guardadoe-dialog.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'jhi-usuario-update',
@@ -32,7 +34,8 @@ export class UsuarioUpdateComponent implements OnInit {
     protected usuarioService: UsuarioService,
     protected equipoService: EquipoService,
     protected activatedRoute: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    protected modalService: NgbModal
   ) {}
 
   ngOnInit(): void {
@@ -57,6 +60,10 @@ export class UsuarioUpdateComponent implements OnInit {
 
   previousState(): void {
     window.history.back();
+  }
+
+  ifsave(): void {
+    this.modalService.open(UsuarioGuardadoeDialogComponent, { size: 'lg', backdrop: 'static' });
   }
 
   save(): void {
@@ -91,7 +98,7 @@ export class UsuarioUpdateComponent implements OnInit {
 
   protected onSaveSuccess(): void {
     this.isSaving = false;
-    this.previousState();
+    this.ifsave();
   }
 
   protected onSaveError(): void {
