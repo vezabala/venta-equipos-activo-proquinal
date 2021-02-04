@@ -12,6 +12,9 @@
                     <th scope="col"  jhiSortBy="marca"><span jhiTranslate="proquiEquiposVentaApp.equipo.marca">Marca</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="windowss"><span jhiTranslate="proquiEquiposVentaApp.equipo.windowss">Windowss</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="tipo"><span jhiTranslate="proquiEquiposVentaApp.equipo.tipo">Tipo</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="discoDuro"><span jhiTranslate="proquiEquiposVentaApp.equipo.discoDuro">Disco Duro</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="ram"><span jhiTranslate="proquiEquiposVentaApp.equipo.ram">Ram</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="precio"><span jhiTranslate="proquiEquiposVentaApp.equipo.precio">Precio</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -22,6 +25,9 @@
                     <td>{{ equipo.marca }}</td>
                     <td>{{ equipo.windowss }}</td>
                     <td jhiTranslate="{{ 'proquiEquiposVentaApp.State.' + equipo.tipo }}">{{ equipo.tipo }}</td>
+                    <td>{{ equipo.discoDuro }}</td>
+                    <td>{{ equipo.ram }}</td>
+                    <td>$ {{ equipo.precio }}</td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="button"
