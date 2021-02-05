@@ -12,6 +12,7 @@ import proquinal.com.domain.enumeration.State;
 import proquinal.com.repository.EquipoRepository;
 import proquinal.com.security.AuthoritiesConstants;
 import proquinal.com.service.EquipoEscritorioServiceQuery;
+import proquinal.com.service.EquipoPortatilServiceQuery;
 import proquinal.com.service.EquipoService;
 import proquinal.com.service.EquipoServiceQuery;
 import proquinal.com.service.dto.BusquedaEquipoDTO;
@@ -57,10 +58,13 @@ public class EquipoResource {
 
     private final EquipoEscritorioServiceQuery equipoEscritorioServiceQuery;
 
-    public EquipoResource(EquipoService equipoService, EquipoServiceQuery equipoServiceQuery, EquipoEscritorioServiceQuery equipoEscritorioServiceQuery, EquipoRepository equipoRepository) {
+    private final EquipoPortatilServiceQuery equipoPortatiloServiceQuery;
+
+    public EquipoResource(EquipoService equipoService, EquipoServiceQuery equipoServiceQuery, EquipoEscritorioServiceQuery equipoEscritorioServiceQuery, EquipoPortatilServiceQuery equipoPortatiloServiceQuery, EquipoRepository equipoRepository) {
         this.equipoService = equipoService;
         this.equipoServiceQuery = equipoServiceQuery;
         this.equipoEscritorioServiceQuery = equipoEscritorioServiceQuery;
+        this.equipoPortatiloServiceQuery = equipoPortatiloServiceQuery;
         this.equipoRepository = equipoRepository;
     }
 
@@ -160,6 +164,15 @@ public class EquipoResource {
         log.debug("REST request to get a page of EquiposEscri");
         EquipoCriteria equipoCriteria = createCriteria(busquedaEquipoDTO);
         Page<Equipo> page = equipoEscritorioServiceQuery.findByCriterialE(equipoCriteria,pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
+
+    @PostMapping("/equipos/listP")
+    public ResponseEntity<List<Equipo>> ListP(@ApiParam Pageable pageable,@RequestBody BusquedaEquipoDTO busquedaEquipoDTO){
+        log.debug("REST request to get a page of EquiposEscri");
+        EquipoCriteria equipoCriteria = createCriteria(busquedaEquipoDTO);
+        Page<Equipo> page = equipoPortatiloServiceQuery.findByCriterialP(equipoCriteria,pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }

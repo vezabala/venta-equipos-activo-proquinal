@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { SERVER_API_URL } from 'app/app.constants';
 import { createRequestOption } from 'app/shared/util/request-util';
 import { IEquipo } from 'app/shared/model/equipo.model';
+import { BusquedaEquipo } from 'app/entities/model/busquedaEquipo';
 
 type EntityResponseType = HttpResponse<IEquipo>;
 type EntityArrayResponseType = HttpResponse<IEquipo[]>;
@@ -35,5 +36,11 @@ export class EquipoPortatilService {
 
   delete(id: number): Observable<HttpResponse<{}>> {
     return this.http.delete(`${this.resourceUrl}/${id}`, { observe: 'response' });
+  }
+  equiposP(busqueda: BusquedaEquipo): Observable<any[]> {
+    return this.http.post<any[]>(this.resourceUrl + '/list', busqueda);
+  }
+  equiposReturnP(busqueda: BusquedaEquipo): Observable<any[]> {
+    return this.http.post<any[]>(this.resourceUrl + '/listP', busqueda);
   }
 }
