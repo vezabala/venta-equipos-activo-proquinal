@@ -37,4 +37,10 @@ export class EquipoEscritorioService {
   delete(id: number): Observable<HttpResponse<{}>> {
     return this.http.delete(`${this.resourceUrl}/${id}`, { observe: 'response' });
   }
+  equiposE(busqueda: BusquedaEquipo): Observable<any[]> {
+    return this.http.post<any[]>(this.resourceUrl + '/list', busqueda);
+  }
+  equiposReturn(busqueda: BusquedaEquipo): Observable<any[]> {
+    return this.http.post<any[]>(this.resourceUrl + '/listE', busqueda);
+  }
 }

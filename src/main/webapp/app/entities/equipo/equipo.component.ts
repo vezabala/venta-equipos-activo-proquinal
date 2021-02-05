@@ -63,7 +63,6 @@ export class EquipoComponent implements OnInit, OnDestroy {
       this.predicate = data.pagingParams.predicate;
       this.ngbPaginationPage = data.pagingParams.page;
       this.loadPage();
-      this.listaEquipos();
     });
     this.registerChangeInEquipos();
   }

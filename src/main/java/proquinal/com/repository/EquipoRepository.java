@@ -2,6 +2,8 @@ package proquinal.com.repository;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
+import org.springframework.lang.Nullable;
 import proquinal.com.domain.Equipo;
 
 import org.springframework.data.jpa.repository.*;
@@ -22,4 +24,7 @@ public interface EquipoRepository extends JpaRepository<Equipo, Long>,JpaSpecifi
 
     @Query("SELECT e FROM Equipo e WHERE e.tipo ='PORTATIL'")
     Page<Equipo> findByTipoPortatil(Pageable pageable);
+
+    @Query("SELECT e FROM Equipo e WHERE e.tipo ='ESCRITORIO'")
+    Page<Equipo> findAllByTipoEscritorio(@Nullable Specification<Equipo> var1, Pageable var2);
 }

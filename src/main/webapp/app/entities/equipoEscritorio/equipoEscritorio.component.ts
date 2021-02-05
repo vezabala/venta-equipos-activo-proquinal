@@ -26,6 +26,11 @@ export class EquipoEscritorioComponent implements OnInit, OnDestroy {
   ascending!: boolean;
   ngbPaginationPage = 1;
 
+  busqueda: BusquedaEquipo = {
+    activoFijo: '',
+    tipo: ''
+  };
+
   constructor(
     protected equipoService: EquipoEscritorioService,
     protected activatedRoute: ActivatedRoute,
@@ -59,6 +64,24 @@ export class EquipoEscritorioComponent implements OnInit, OnDestroy {
       this.loadPage();
     });
     this.registerChangeInEquipos();
+  }
+
+  listaEquiposE(): void {
+    this.equipoService.equiposE(this.busqueda).subscribe(
+      data => {
+        this.equipos = data;
+      },
+      () => this.onError()
+    );
+  }
+
+  listaEquiposEs(): void {
+    this.equipoService.equiposReturn(this.busqueda).subscribe(
+      data => {
+        this.equipos = data;
+      },
+      () => this.onError()
+    );
   }
 
   ngOnDestroy(): void {
@@ -112,5 +135,14 @@ export class EquipoEscritorioComponent implements OnInit, OnDestroy {
 
   protected onError(): void {
     this.ngbPaginationPage = this.page;
+  }
+  clearActivoFijo(): void {
+    this.busqueda.activoFijo = '';
+    this.listaEquiposEs();
+  }
+  clear(): void {
+    this.busqueda.activoFijo = '';
+    this.busqueda.tipo = '';
+    this.listaEquiposEs();
   }
 }
