@@ -10,8 +10,6 @@ import { UserRouteAccessService } from 'app/core/auth/user-route-access-service'
 import { IEquipo, Equipo } from 'app/shared/model/equipo.model';
 import { EquipoEscritorioService } from './equipoEscritorio.service';
 import { EquipoEscritorioComponent } from './equipoEscritorio.component';
-import { EquipoUpdateComponent } from 'app/entities/equipo/equipo-update.component';
-import { EquipoDetailComponent } from 'app/entities/equipo/equipo-detail.component';
 import { EquipoEscritorioDetailComponent } from 'app/entities/equipoEscritorio/equipo-Escritorio-detail.component';
 import { EquipoEscritorioUpdateComponent } from 'app/entities/equipoEscritorio/equipo-Escritorio-update.component';
 

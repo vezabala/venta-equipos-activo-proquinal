@@ -26,7 +26,6 @@ export class EquipoComponent implements OnInit, OnDestroy {
   ascending!: boolean;
   ngbPaginationPage = 1;
 
-  equiposList: any[] = [];
   busqueda: BusquedaEquipo = {
     activoFijo: '',
     tipo: ''

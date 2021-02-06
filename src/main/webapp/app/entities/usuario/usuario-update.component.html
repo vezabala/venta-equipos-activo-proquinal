@@ -12,7 +12,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="proquiEquiposVentaApp.usuario.equipo" for="field_equipo">Equipo</label>
+                    <label class="form-control-label" jhiTranslate="proquiEquiposVentaApp.usuario.actFijo" for="field_equipo">Equipo</label>
                     <select class="form-control" id="field_equipo" name="equipo" formControlName="equipoId">
                         <option *ngIf="!editForm.get('equipoId')!.value" [ngValue]="null" selected></option>
                         <option [ngValue]="equipoOption.id" *ngFor="let equipoOption of equipos; trackBy: trackById">{{ equipoOption.activoFijo }}</option>

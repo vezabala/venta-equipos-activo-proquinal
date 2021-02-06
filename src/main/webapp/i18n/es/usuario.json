@@ -21,7 +21,8 @@
       "apellidos": "Apellidos",
       "correo": "Correo",
       "area": "Area",
-      "equipo": "Elija el Activo Fijo del equipo que se va a inscribir"
+      "equipo": "Activo Fijo",
+      "actFijo": "Elija el Activo Fijo del equipo que se va a inscribir"
     }
   }
 }

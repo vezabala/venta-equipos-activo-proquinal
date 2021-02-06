@@ -9,7 +9,6 @@ import { JhiDataUtils, JhiFileLoadError, JhiEventManager, JhiEventWithContent } 
 import { IEquipo, Equipo } from 'app/shared/model/equipo.model';
 import { EquipoPortatilService } from './equipoPortatil.service';
 import { AlertError } from 'app/shared/alert/alert-error.model';
-import { EquipoPortatilDeleteDialogComponent } from 'app/entities/equipoPortaril/equipo-Portatil-delete-dialog.component';
 
 @Component({
   selector: 'jhi-equipo-update',
