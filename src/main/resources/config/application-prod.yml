@@ -33,9 +33,9 @@ spring:
       enabled: false
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:postgresql://localhost:5432/ProquiEquiposVenta
-    username: ProquiEquiposVenta
-    password:
+    url: jdbc:postgresql://proquinal-equipos.ceshhi7w4frl.us-east-1.rds.amazonaws.com/EquiposVentaProquinal
+    username: postgres
+    password: B4v13r4+17
     hikari:
       poolName: Hikari
       auto-commit: false
@@ -48,14 +48,14 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: equiposventaproqui@gmail.com #Replace this field with your Gmail username.
-    password: umbsizvyjgxgoxck #Replace this field with your Gmail password/App password.
-    protocol: smtp
-    tls: true
-    properties.mail.smtp:
-      auth: true
-      starttls.enable: true
-      ssl.trust: smtp.gmail.com
+    username: equiposventaproqui@gmail.com
+    password: umbsizvyjgxgoxck
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
   thymeleaf:
     cache: true
 
@@ -92,6 +92,13 @@ server:
 # ===================================================================
 
 jhipster:
+  cors:
+    allowed-origins: '*'
+    allowed-methods: '*'
+    allowed-headers: '*'
+    exposed-headers: 'Authorization,Link,X-Total-Count'
+    allow-credentials: true
+    max-age: 1800
   http:
     cache: # Used by the CachingHttpHeadersFilter
       timeToLiveInDays: 1461
