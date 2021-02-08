@@ -11,7 +11,7 @@ const sass = require('sass');
 const utils = require('./utils.js');
 const commonConfig = require('./webpack.common.js');
 
-const ENV = 'production';
+const ENV = 'development';
 
 module.exports = (options) => webpackMerge(commonConfig({ env: ENV }), {
     devtool: 'eval-source-map',
@@ -116,5 +116,5 @@ module.exports = (options) => webpackMerge(commonConfig({ env: ENV }), {
             contentImage: path.join(__dirname, 'logo-jhipster.png')
         })
     ].filter(Boolean),
-    mode: 'production'
+    mode: 'development'
 });
