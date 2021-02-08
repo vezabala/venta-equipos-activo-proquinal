@@ -7,6 +7,9 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entidades",
+        "usuario": "Usuario",
+        "equipo": "Equipo",
+        "equipoEscritorio": "EsquipoEscritorio",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {
@@ -98,7 +101,8 @@
       "edit": "Editar",
       "open": "Abrir",
       "save": "Guardar",
-      "view": "Vista"
+      "view": "Vista",
+      "viewEscritorio": "Ver descripcion completa"
     },
     "detail": {
       "field": "Campo",
@@ -133,7 +137,8 @@
     "file": {
       "could.not.extract": "Could not extract file",
       "not.image": "File was expected to be an image but was found to be \"{{ fileType }}\""
-    }
-  },
-  "footer": "Pie de página"
+    },
+    "idequipoexist": "Ya  estas registrado en este equipo puedes elegir otro",
+    "activofijoexists": "Ya se a agregado este activo fijo en la entidad"
+  }
 }

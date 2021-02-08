@@ -37,9 +37,9 @@ spring:
       indent-output: true
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:postgresql://localhost:5432/ProquiEquiposVenta
-    username: ProquiEquiposVenta
-    password:
+    url: jdbc:postgresql://localhost:5432/ProquinalEquipos
+    username: postgres
+    password: 12345
     hikari:
       poolName: Hikari
       auto-commit: false
@@ -54,12 +54,18 @@ spring:
       hibernate.generate_statistics: false
   liquibase:
     # Remove 'faker' if you do not want the sample data to be loaded automatically
-    contexts: dev, faker
+    contexts: dev
   mail:
-    host: localhost
-    port: 25
-    username:
-    password:
+    host: smtp.gmail.com
+    port: 587
+    username: equiposventaproqui@gmail.com
+    password: umbsizvyjgxgoxck
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
   messages:
     cache-duration: PT1S # 1 second, see the ISO 8601 standard
   thymeleaf:
