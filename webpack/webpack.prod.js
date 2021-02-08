@@ -11,7 +11,7 @@ const path = require('path');
 const utils = require('./utils.js');
 const commonConfig = require('./webpack.common.js');
 
-const ENV = 'production';
+const ENV = 'development';
 const sass = require('sass');
 
 module.exports = webpackMerge(commonConfig({ env: ENV }), {
@@ -145,5 +145,5 @@ module.exports = webpackMerge(commonConfig({ env: ENV }), {
             exclude: [/swagger-ui/]
         })
     ],
-    mode: 'production'
+    mode: 'development'
 });
