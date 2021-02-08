@@ -116,5 +116,5 @@ module.exports = (options) => webpackMerge(commonConfig({ env: ENV }), {
             contentImage: path.join(__dirname, 'logo-jhipster.png')
         })
     ].filter(Boolean),
-    mode: 'development'
+    mode: 'production'
 });
