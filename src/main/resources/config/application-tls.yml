@@ -17,3 +17,18 @@ server:
     enabled-protocols: TLSv1.2
   http2:
     enabled: true
+
+    mail:
+      host: smtp.gmail.com
+      port: 587
+      username: equiposventaproqui@gmail.com
+      password: umbsizvyjgxgoxck
+      properties:
+        mail:
+          smtp:
+            auth: true
+            starttls:
+              enable: true
+
+    thymeleaf:
+      cache: true

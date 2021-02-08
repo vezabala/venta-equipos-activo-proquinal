@@ -11,7 +11,7 @@ const path = require('path');
 const utils = require('./utils.js');
 const commonConfig = require('./webpack.common.js');
 
-const ENV = 'productionz';
+const ENV = 'production';
 const sass = require('sass');
 
 module.exports = webpackMerge(commonConfig({ env: ENV }), {

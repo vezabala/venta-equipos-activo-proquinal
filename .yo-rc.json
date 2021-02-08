@@ -38,7 +38,7 @@
     "nativeLanguage": "es",
     "languages": ["es"],
     "blueprints": [],
-    "herokuAppName": "proqui-equipos-venta",
+    "herokuAppName": "proquinalequiposventa",
     "herokuDeployType": "git"
   }
 }
