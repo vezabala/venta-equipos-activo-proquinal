@@ -32,7 +32,6 @@
             "fieldName": "correo",
             "fieldType": "String",
             "fieldValidateRules": [
-                "required",
                 "maxlength"
             ],
             "fieldValidateRulesMaxlength": "50"

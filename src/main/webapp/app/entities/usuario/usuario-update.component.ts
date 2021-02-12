@@ -25,7 +25,6 @@ export class UsuarioUpdateComponent implements OnInit {
     numeroDocumento: [null, [Validators.required, Validators.maxLength(255)]],
     nombres: [null, [Validators.required, Validators.maxLength(50)]],
     apellidos: [null, [Validators.required, Validators.maxLength(50)]],
-    correo: [null, [Validators.required, Validators.maxLength(50)]],
     area: [null, [Validators.required, Validators.maxLength(50)]],
     equipoId: [null, Validators.required]
   });
@@ -52,7 +51,6 @@ export class UsuarioUpdateComponent implements OnInit {
       numeroDocumento: usuario.numeroDocumento,
       nombres: usuario.nombres,
       apellidos: usuario.apellidos,
-      correo: usuario.correo,
       area: usuario.area,
       equipoId: usuario.equipoId
     });
@@ -83,7 +81,6 @@ export class UsuarioUpdateComponent implements OnInit {
       numeroDocumento: this.editForm.get(['numeroDocumento'])!.value,
       nombres: this.editForm.get(['nombres'])!.value,
       apellidos: this.editForm.get(['apellidos'])!.value,
-      correo: this.editForm.get(['correo'])!.value,
       area: this.editForm.get(['area'])!.value,
       equipoId: this.editForm.get(['equipoId'])!.value
     };

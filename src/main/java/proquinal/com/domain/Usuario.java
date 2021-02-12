@@ -37,7 +37,6 @@ public class Usuario implements Serializable {
     @Column(name = "apellidos", length = 50, nullable = false)
     private String apellidos;
 
-    @NotNull
     @Size(max = 50)
     @Column(name = "correo", length = 50, nullable = false)
     private String correo;

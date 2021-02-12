@@ -25,7 +25,7 @@
                 <constraints nullable="false" />
             </column>
             <column name="correo" type="varchar(50)">
-                <constraints nullable="false" />
+                <constraints nullable="true" />
             </column>
             <column name="area" type="varchar(50)">
                 <constraints nullable="false" />

@@ -26,7 +26,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="proquiEquiposVentaApp.usuario.numeroDocumento" for="field_numeroDocumento">Numero Documento</label>
+                    <label class="form-control-label" jhiTranslate="proquiEquiposVentaApp.usuario.numeroDocumento" for="field_numeroDocumento">Codigo</label>
                     <input type="text" class="form-control" name="numeroDocumento" id="field_numeroDocumento"
                            formControlName="numeroDocumento"/>
                     <div *ngIf="editForm.get('numeroDocumento')!.invalid && (editForm.get('numeroDocumento')!.dirty || editForm.get('numeroDocumento')!.touched)">
@@ -42,7 +42,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="proquiEquiposVentaApp.usuario.nombres" for="field_nombres">Nombres</label>
+                    <label class="form-control-label" jhiTranslate="proquiEquiposVentaApp.usuario.nombres" for="field_nombres">Nombre Completo</label>
                     <input type="text" class="form-control" name="nombres" id="field_nombres"
                            formControlName="nombres"/>
                     <div *ngIf="editForm.get('nombres')!.invalid && (editForm.get('nombres')!.dirty || editForm.get('nombres')!.touched)">
@@ -68,22 +68,6 @@
                         </small>
                         <small class="form-text text-danger"
                                *ngIf="editForm.get('apellidos')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 50 }">
-                        This field cannot be longer than 50 characters.
-                        </small>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="proquiEquiposVentaApp.usuario.correo" for="field_correo">Correo</label>
-                    <input type="text" class="form-control" name="correo" id="field_correo"
-                           formControlName="correo"/>
-                    <div *ngIf="editForm.get('correo')!.invalid && (editForm.get('correo')!.dirty || editForm.get('correo')!.touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('correo')?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
-                        </small>
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('correo')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 50 }">
                         This field cannot be longer than 50 characters.
                         </small>
                     </div>

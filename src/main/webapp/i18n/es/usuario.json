@@ -16,13 +16,13 @@
       "detail": {
         "title": "Usuario"
       },
-      "numeroDocumento": "Numero Documento",
-      "nombres": "Nombres",
-      "apellidos": "Apellidos",
+      "numeroDocumento": "codigo",
+      "nombres": "Nombre completos",
+      "apellidos": "extensión",
       "correo": "Correo",
       "area": "Area",
       "equipo": "Activo Fijo",
-      "actFijo": "Elija el Activo Fijo del equipo que se va a inscribir"
+      "actFijo": "Elija el Activo Fijo del equipo que se va a inscribir (puede ir escribiendo el activo Fijo y se autocompleta)"
     }
   }
 }

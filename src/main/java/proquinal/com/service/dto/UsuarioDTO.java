@@ -8,7 +8,7 @@ import java.util.Objects;
  * A DTO for the {@link proquinal.com.domain.Usuario} entity.
  */
 public class UsuarioDTO implements Serializable {
-    
+
     private Long id;
 
     @NotNull
@@ -23,7 +23,6 @@ public class UsuarioDTO implements Serializable {
     @Size(max = 50)
     private String apellidos;
 
-    @NotNull
     @Size(max = 50)
     private String correo;
 
@@ -35,7 +34,7 @@ public class UsuarioDTO implements Serializable {
     private Long equipoId;
 
     private String equipoActivoFijo;
-    
+
     public Long getId() {
         return id;
     }
