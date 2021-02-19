@@ -21,6 +21,10 @@
                 <dd>
                     <span>{{ equipo.activoFijo }}</span>
                 </dd>
+                <dt><span jhiTranslate="proquiEquiposVentaApp.equipo.sistemaOperativo">Sistema Operativo</span></dt>
+                <dd>
+                    <span>{{ equipo.sistemaOperativo }}</span>
+                </dd>
                 <dt><span jhiTranslate="proquiEquiposVentaApp.equipo.marca">Marca</span></dt>
                 <dd>
                     <span>{{ equipo.marca }}</span>
@@ -46,7 +50,7 @@
                             <span>$ {{ equipo.precio }}</span>
                         </h2>
                     </dd>
-                    <dt><span>Ten en cuenta el activo fijo para inscripcion</span></dt>
+                    <dt><span>Ten en cuenta el nombre del equipo ({{ equipo.activoFijo }}) para inscripcion</span></dt>
                     <button type="submit"
                             (click)="previousState()"
                             class="btn btn-danger" >
@@ -58,10 +62,6 @@
                         <span>Inscribirme</span>
                     </button>
                 </div>
-                <dt><span jhiTranslate="proquiEquiposVentaApp.equipo.sistemaOperativo">Sistema Operativo</span></dt>
-                <dd>
-                    <span>{{ equipo.sistemaOperativo }}</span>
-                </dd>
                 <dt><span jhiTranslate="proquiEquiposVentaApp.equipo.discoDuro">Disco Duro</span></dt>
                 <dd>
                     <span>{{ equipo.discoDuro }}</span>

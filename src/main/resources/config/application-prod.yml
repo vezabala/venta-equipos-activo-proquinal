@@ -33,9 +33,9 @@ spring:
       enabled: false
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:postgresql://proquinal-equipos.ceshhi7w4frl.us-east-1.rds.amazonaws.com/EquiposVentaProquinal
+    url: jdbc:postgresql://localhost:5432/ProquinalEquipos
     username: postgres
-    password: B4v13r4+17
+    password: 12345
     hikari:
       poolName: Hikari
       auto-commit: false

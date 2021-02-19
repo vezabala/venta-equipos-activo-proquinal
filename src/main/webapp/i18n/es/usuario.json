@@ -22,7 +22,7 @@
       "correo": "Correo",
       "area": "Area",
       "equipo": "Activo Fijo",
-      "actFijo": "Elija el Activo Fijo del equipo que se va a inscribir (puede ir escribiendo el activo Fijo y se autocompleta)"
+      "actFijo": "Elija el Equipo (puede ir escribiendo el equipo y se autocompleta)"
     }
   }
 }

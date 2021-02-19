@@ -16,11 +16,11 @@
       "detail": {
         "title": "Equipo"
       },
-      "activoFijo": "Activo Fijo",
+      "activoFijo": "Nombre equipo",
       "marca": "Marca",
       "procesador": "Procesador",
       "office": "Office",
-      "sistemaOperativo": "Sistema Operativo",
+      "sistemaOperativo": "activo fijo",
       "discoDuro": "Disco Duro",
       "ram": "Ram",
       "observaciones": "Observaciones",
