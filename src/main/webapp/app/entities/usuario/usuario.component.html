@@ -53,11 +53,21 @@
                     <button class="btn btn-outline-danger form-control" (click)="clear()" id="reseter">Actualizar tabala y borrar Filtros</button>
                 </div>
             </div>
+            <div class="row">
+                <div class=""col4>
+                    <div>
+                        <label><b>Excel click para descargar:</b></label>
+                        <div>
+                            <button type="submit" class="btn btn-info btn-sm" (click)="exportexcel()">Descargar archivo excel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </form>
     </div>
 
     <div class="table-responsive" id="entities" *ngIf="usuarios?.length > 0">
-        <table class="table table-striped" aria-describedby="page-heading">
+        <table class="table table-striped" id="excel-table" aria-describedby="page-heading">
             <thead>
                 <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
                     <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>

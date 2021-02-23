@@ -11,6 +11,7 @@ import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { UsuarioService } from './usuario.service';
 import { UsuarioDeleteDialogComponent } from './usuario-delete-dialog.component';
 import { BusquedaUsuario } from 'app/entities/model/busquedaUsuario';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'jhi-usuario',
@@ -33,6 +34,8 @@ export class UsuarioComponent implements OnInit, OnDestroy {
     numeroDocumento: '',
     equipo: ''
   };
+  /*name of the excel-file which will be downloaded. */
+  fileName = 'Usuarios.xlsx';
 
   constructor(
     protected usuarioService: UsuarioService,
@@ -151,5 +154,15 @@ export class UsuarioComponent implements OnInit, OnDestroy {
     this.busqueda.equipo = '';
     this.busqueda.numeroDocumento = '';
     this.listaUsuarios();
+  }
+
+  exportexcel(): void {
+    const element = document.getElementById('excel-table');
+    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
+
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+    XLSX.writeFile(wb, this.fileName);
   }
 }

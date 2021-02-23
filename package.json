@@ -24,6 +24,7 @@
     "@ngx-translate/http-loader": "4.0.0",
     "bootstrap": "4.4.1",
     "bootswatch": "4.4.1",
+    "file-saver": "^2.0.5",
     "moment": "2.24.0",
     "ng-jhipster": "0.12.0",
     "ngx-cookie": "4.0.2",
@@ -32,6 +33,7 @@
     "rxjs": "6.5.3",
     "swagger-ui-dist": "3.24.3",
     "tslib": "1.10.0",
+    "xlsx": "^0.16.9",
     "zone.js": "0.10.2"
   },
   "devDependencies": {
