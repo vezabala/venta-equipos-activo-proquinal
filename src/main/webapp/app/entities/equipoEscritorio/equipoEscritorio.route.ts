@@ -12,6 +12,7 @@ import { EquipoEscritorioService } from './equipoEscritorio.service';
 import { EquipoEscritorioComponent } from './equipoEscritorio.component';
 import { EquipoEscritorioDetailComponent } from 'app/entities/equipoEscritorio/equipo-Escritorio-detail.component';
 import { EquipoEscritorioUpdateComponent } from 'app/entities/equipoEscritorio/equipo-Escritorio-update.component';
+import { EquipusuarioUpdateComponent } from 'app/entities/equipoEscritorio/equipusuario-update.component';
 
 @Injectable({ providedIn: 'root' })
 export class EquipoResolve implements Resolve<IEquipo> {
@@ -70,6 +71,18 @@ export const equipoEscritorioRoute: Routes = [
     data: {
       authorities: [Authority.USER],
       pageTitle: 'proquiEquiposVentaApp.equipo.home.title'
+    },
+    canActivate: [UserRouteAccessService]
+  },
+  {
+    path: ':id/newusuario',
+    component: EquipusuarioUpdateComponent,
+    resolve: {
+      equipo: EquipoResolve
+    },
+    data: {
+      authorities: [],
+      pageTitle: 'proquiEquiposVentaApp.usuario.home.title'
     },
     canActivate: [UserRouteAccessService]
   },

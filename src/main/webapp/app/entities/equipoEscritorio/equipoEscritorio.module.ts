@@ -6,6 +6,8 @@ import { EquipoEscritorioComponent } from './equipoEscritorio.component';
 import { EquipoEscritorioDetailComponent } from './equipo-Escritorio-detail.component';
 import { EquipoEscritorioUpdateComponent } from './equipo-Escritorio-update.component';
 import { EquipoEscritorioDeleteDialogComponent } from './equipo-Escritorio-delete-dialog.component';
+import { EquipusuarioGuardadoeDialogComponent } from './equipusuario-guardadoe-dialog.component';
+import { EquipusuarioUpdateComponent } from './equipusuario-update.component';
 import { equipoEscritorioRoute } from './equipoEscritorio.route';
 
 @NgModule({
@@ -14,7 +16,9 @@ import { equipoEscritorioRoute } from './equipoEscritorio.route';
     EquipoEscritorioComponent,
     EquipoEscritorioDetailComponent,
     EquipoEscritorioUpdateComponent,
-    EquipoEscritorioDeleteDialogComponent
+    EquipoEscritorioDeleteDialogComponent,
+    EquipusuarioGuardadoeDialogComponent,
+    EquipusuarioUpdateComponent
   ],
   entryComponents: [EquipoEscritorioDeleteDialogComponent]
 })

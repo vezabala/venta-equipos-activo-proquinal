@@ -50,14 +50,13 @@
                             <span>$ {{ equipo.precio }}</span>
                         </h2>
                     </dd>
-                    <dt><span>Ten en cuenta el nombre del equipo ({{ equipo.activoFijo }}) para inscripcion</span></dt>
                     <button type="submit"
                             (click)="previousState()"
                             class="btn btn-danger" >
                         <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
                     </button>
                     <button type="submit"
-                            [routerLink]="['/usuario/new']"
+                            [routerLink]="['/equipoEscritorio', equipo.id, 'newusuario']"
                             class="btn btn-info" >
                         <span>Inscribirme</span>
                     </button>

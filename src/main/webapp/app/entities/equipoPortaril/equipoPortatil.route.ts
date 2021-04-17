@@ -12,6 +12,7 @@ import { EquipoPortatilService } from './equipoPortatil.service';
 import { EquipoPortatilComponent } from './equipoPortatil.component';
 import { EquipoPortatilDetailComponent } from 'app/entities/equipoPortaril/equipo-Portatil-detail.component';
 import { EquipoPortatilUpdateComponent } from 'app/entities/equipoPortaril/equipo-Portatil-update.component';
+import { PortausuarioUpdateComponent } from './portausuario-update.component';
 
 @Injectable({ providedIn: 'root' })
 export class EquipoResolve implements Resolve<IEquipo> {
@@ -70,6 +71,18 @@ export const equipoPortatilRoute: Routes = [
     data: {
       authorities: [Authority.USER],
       pageTitle: 'proquiEquiposVentaApp.equipo.home.title'
+    },
+    canActivate: [UserRouteAccessService]
+  },
+  {
+    path: ':id/newusuario',
+    component: PortausuarioUpdateComponent,
+    resolve: {
+      equipo: EquipoResolve
+    },
+    data: {
+      authorities: [],
+      pageTitle: 'proquiEquiposVentaApp.usuario.home.title'
     },
     canActivate: [UserRouteAccessService]
   },
